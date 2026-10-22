@@ -54,7 +54,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
 body {
   margin: 0;
   background: var(--greyscale-100);
@@ -94,7 +94,7 @@ svg { display: block; }
 .round-btn:hover { transform: scale(1.06); }
 
 /* ===== Top bars ===== */
-.top-white { background: #fff; border-radius: 0 0 var(--r-section) var(--r-section); padding-bottom: 56px; }
+.top-white { display: flow-root; background: #fff; border-radius: 0 0 var(--r-section) var(--r-section); padding-bottom: 56px; }
 .audience {
   display: flex; align-items: center; justify-content: space-between; height: 40px;
   font: 500 14px/20px var(--f-compact);
@@ -106,52 +106,80 @@ svg { display: block; }
 .audience a[aria-current] { font-weight: 700; }
 .audience .right a { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
 
-.header { position: sticky; top: 0; z-index: 50; background: #fff; }
+.audience-bar { position: relative; z-index: 45; background: #fff; }
+.header { position: sticky; top: 0; z-index: 50; background: #fff; padding-top: env(safe-area-inset-top, 0px); transition: box-shadow .25s ease; }
+.header.is-stuck { box-shadow: 0 6px 24px rgba(0,0,0,.08); }
 .header-in { display: flex; align-items: center; gap: 24px; height: 64px; }
 .logo { display: inline-flex; align-items: center; gap: 10px; flex: none; }
-.logo-mark {
-  width: 40px; height: 40px; border-radius: 8px; background: var(--brand); color: #fff;
-  display: grid; place-items: center; font: 700 22px/1 var(--f-wide);
-}
-.logo-word { font: 700 22px/1 var(--f-wide); letter-spacing: -.01em; }
+.logo-img { display: block; width: 139px; height: 30px; }
 .nav { display: flex; align-items: center; gap: 4px; margin-right: auto; }
 .nav a { padding: 8px 12px; font: 500 14px/20px var(--f-compact); color: #000; border-radius: 12px; transition: background-color .2s; }
-.nav a:hover { background: var(--greyscale-100); }
-.nav .badge-5g {
-  display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; height: 28px; padding: 0 12px; border-radius: 10px;
-  background: linear-gradient(90deg, #3a3f66, #1f2136); color: #fff; font: 700 12px/16px var(--f-wide); text-transform: uppercase;
+.nav a:not(.badge-home):hover { background: var(--greyscale-100); }
+/* Анимированный бейдж MobiHome (багровый градиент, динамика как у «УЖЕ 5G» в МТС) */
+.badge-home {
+  position: relative; overflow: hidden; isolation: isolate; display: inline-flex; align-items: center; gap: 8px;
+  height: 30px; padding: 0 14px 0 8px; border-radius: 10px; color: #fff;
+  background: linear-gradient(100deg, #5c0a26 0%, #c4173f 48%, #5c0a26 100%); background-size: 200% 100%;
+  animation: homeFlow 6s linear infinite;
+  font: 700 13px/16px var(--f-wide); letter-spacing: .01em; white-space: nowrap;
 }
-.nav .badge-5g:hover { background: linear-gradient(90deg, #4a5080, #2b2e4a); }
+.nav a.badge-home { margin-left: 8px; padding: 0 14px 0 8px; border-radius: 10px; color: #fff; }
+/* скоростные штрихи */
+.badge-home::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .75; pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.28) 0 1px, transparent 1px 4px);
+  background-size: 40px 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 45%, transparent 100%);
+  animation: homeStreak .9s linear infinite;
+}
+/* блик */
+.badge-home::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 60%; z-index: -1; pointer-events: none;
+  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,.38) 50%, transparent 80%);
+  transform: translateX(-130%); animation: homeShine 3s ease-in-out infinite;
+}
+.bd-icon { flex: none; width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; animation: homeBob 2.4s ease-in-out infinite; }
+.bd-icon .w1, .bd-icon .w2, .bd-icon .w0 { animation: homeWifi 1.8s ease-in-out infinite; }
+.bd-icon .w0 { fill: #fff; stroke: none; animation-delay: 0s; }
+.bd-icon .w2 { animation-delay: .25s; }
+.bd-icon .w1 { animation-delay: .5s; }
+.bd-text {
+  background: linear-gradient(100deg, #fff 0%, #fff 38%, #ffc9d6 50%, #fff 62%, #fff 100%); background-size: 260% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  animation: homeText 2.8s linear infinite;
+}
+@keyframes homeFlow { to { background-position: -200% 0; } }
+@keyframes homeStreak { to { background-position: -40px 0; } }
+@keyframes homeShine { 0% { transform: translateX(-130%); } 55%, 100% { transform: translateX(260%); } }
+@keyframes homeText { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+@keyframes homeWifi { 0%, 15% { opacity: .2; } 45%, 75% { opacity: 1; } 100% { opacity: .2; } }
+@keyframes homeBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1px); } }
 .actions { display: flex; align-items: center; gap: 8px; }
 .menu-btn { display: none; width: 44px; height: 44px; border-radius: var(--r-btn); background: var(--greyscale-100); place-items: center; }
 
 /* ===== Hero ===== */
 .hero { display: grid; grid-template-columns: 1fr 340px; gap: 32px; margin-top: 24px; }
 .hero-card {
-  position: relative; overflow: hidden; min-height: 348px; border-radius: var(--r-card); padding: 40px;
-  background:
-    radial-gradient(194.9% 141.42% at 0% 0%, rgba(194,211,253,.95) 0%, rgba(231,234,250,.9) 45%, rgba(246,247,252,1) 100%);
+  position: relative; overflow: hidden; min-height: 348px; border-radius: var(--r-card); padding: 40px; color: #fff;
+  background: linear-gradient(120deg, #232a72 0%, #3a4cc8 55%, #7184ee 100%);
   display: flex; flex-direction: column; justify-content: space-between;
 }
-.hero-card h1 { font: 500 34px/40px var(--f-wide); max-width: 440px; letter-spacing: -.01em; }
+.hero-card > div:not(.hero-art) { position: relative; z-index: 2; }
+.hero-card h1 { font: 500 34px/40px var(--f-wide); max-width: 460px; letter-spacing: -.01em; }
 .hero-card .tag {
-  display: inline-block; margin-top: 16px; padding: 4px 10px; border-radius: 8px; background: rgba(255,255,255,.7);
-  font: 500 13px/16px var(--f-compact);
+  display: inline-block; margin-top: 16px; padding: 5px 12px; border-radius: 10px; background: rgba(255,255,255,.16);
+  font: 500 15px/20px var(--f-compact);
 }
-.hero-art { position: absolute; right: -10px; top: 0; bottom: 0; width: 46%; pointer-events: none; }
-.coin {
-  position: absolute; display: grid; place-items: center; border-radius: 50%; color: #fff; font: 700 28px/1 var(--f-wide);
-  box-shadow: inset -10px -12px 24px rgba(0,0,0,.18), inset 8px 8px 18px rgba(255,255,255,.45), 0 18px 40px rgba(60,70,140,.25);
+.hero-art { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.hero-art .orb { position: absolute; border-radius: 50%; }
+.hero-art .o1 { width: 400px; height: 400px; right: -70px; top: -90px; background: rgba(255,255,255,.14); }
+.hero-art .o2 { width: 230px; height: 230px; right: 230px; bottom: -100px; background: rgba(255,255,255,.12); }
+.hero-art .o3 { width: 120px; height: 120px; right: 36px; top: 30px; border: 2px solid rgba(255,255,255,.16); }
+.hero-art .big {
+  position: absolute; right: 56px; bottom: 22px; font: 900 128px/1 var(--f-wide); letter-spacing: -.04em; color: rgba(255,255,255,.22);
 }
-.coin small { display: block; font: 500 12px/14px var(--f-compact); opacity: .9; text-align: center; }
-.coin--1 { width: 190px; height: 190px; right: 150px; top: 36px; background: radial-gradient(circle at 30% 25%, #ff6b86, var(--brand) 60%, #b8001f); }
-.coin--2 { width: 150px; height: 150px; right: 30px; top: 150px; background: radial-gradient(circle at 30% 25%, #9ab0ff, #4c6be0 60%, #2a3f9e); }
-.coin--3 { width: 110px; height: 110px; right: 200px; top: 220px; background: radial-gradient(circle at 30% 25%, #6ef0d6, var(--mint) 60%, #057a62); }
-.ribbon {
-  position: absolute; right: -40px; top: 120px; width: 520px; padding: 10px 0; transform: rotate(-24deg);
-  background: rgba(255,255,255,.55); backdrop-filter: blur(6px); font: 900 16px/20px var(--f-wide); letter-spacing: .12em;
-  text-transform: uppercase; color: rgba(30,32,50,.78); white-space: nowrap; text-align: center;
-}
+.hero-art .big small { margin-left: 8px; font-size: 44px; letter-spacing: 0; }
 
 .quick { display: grid; gap: 4px; align-content: start; }
 .quick a {
@@ -320,7 +348,7 @@ svg { display: block; }
   opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility .25s ease;
 }
 .scrim.on { opacity: 1; visibility: visible; }
-.nav a.is-open { background: var(--greyscale-100); }
+.nav a.is-open:not(.badge-home) { background: var(--greyscale-100); }
 .mega {
   position: absolute; left: 0; right: 0; top: 100%; padding-top: 12px;
   opacity: 0; visibility: hidden; transform: translateY(-6px);
@@ -383,7 +411,6 @@ svg { display: block; }
 @media (max-width: 900px) {
   .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; margin: 0; padding: 12px var(--gutter) 20px; background: #fff; box-shadow: var(--shadow-middle); border-radius: 0 0 24px 24px; }
   .nav a { padding: 14px 12px; font-size: 17px; }
-  .nav .badge-5g { margin: 8px 0 0; width: fit-content; }
   body.nav-open .nav { display: flex; }
   .menu-btn { display: grid; }
   .header-in { gap: 12px; }
@@ -400,7 +427,11 @@ svg { display: block; }
   .top-white { border-radius: 0 0 40px 40px; padding-bottom: 40px; }
   .hero-card { padding: 28px 24px; min-height: 320px; }
   .hero-card h1 { font-size: 26px; line-height: 32px; }
-  .hero-art { opacity: .55; width: 70%; }
+  .hero-art .big { font-size: 84px; right: 20px; bottom: 16px; }
+  .hero-art .big small { font-size: 28px; }
+  .hero-art .o1 { width: 280px; height: 280px; right: -80px; top: -70px; }
+  .hero-art .o2 { width: 170px; height: 170px; right: 120px; bottom: -80px; }
+  .hero-art .o3 { display: none; }
   .quick { grid-template-columns: 1fr; }
   .h2 { font-size: 28px; line-height: 34px; }
   .slide { padding: 56px 24px 88px; }
@@ -416,9 +447,107 @@ svg { display: block; }
   .tariffs { grid-auto-columns: 82%; }
   .f-grid { grid-template-columns: 1fr 1fr; }
   .footer { border-radius: 40px 40px 0 0; }
-  .logo-word { font-size: 20px; }
+  .logo-img { width: 122px; height: 26px; }
   .actions .btn--primary { padding: 0 14px; }
 }
+/* ===== Mobile UX ===== */
+.mnav { display: none; }
+@media (max-width: 900px) {
+  .nav, body.nav-open .nav { display: none !important; }
+  body.nav-open { overflow: hidden; }
+  body.nav-open .mnav { display: block; }
+  .mnav {
+    position: fixed; left: 0; right: 0; bottom: 0; top: var(--mtop, 64px); z-index: 60; background: #fff;
+    overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+    padding: 4px var(--gutter) calc(32px + env(safe-area-inset-bottom, 0px));
+  }
+  .mnav details { border-bottom: 1px solid var(--greyscale-200); }
+  .mnav summary {
+    list-style: none; display: flex; align-items: center; justify-content: space-between; min-height: 58px;
+    font: 500 20px/24px var(--f-wide); cursor: pointer;
+  }
+  .mnav summary::-webkit-details-marker { display: none; }
+  .mnav summary::after {
+    content: ""; width: 9px; height: 9px; margin-right: 6px; border-right: 2px solid var(--greyscale-500); border-bottom: 2px solid var(--greyscale-500);
+    transform: rotate(45deg); transition: transform .2s ease;
+  }
+  .mnav details[open] summary::after { transform: rotate(-135deg); }
+  .mnav .sub { display: grid; padding: 0 0 14px; }
+  .mnav .sub h5 { margin: 12px 0 2px; font: 700 11px/16px var(--f-wide); letter-spacing: .08em; text-transform: uppercase; color: var(--greyscale-400); }
+  .mnav .sub a { display: flex; align-items: center; min-height: 46px; font: 400 17px/22px var(--f-compact); }
+  .mnav .sub a.lead { font-weight: 500; }
+  .mnav .top { display: flex; align-items: center; justify-content: space-between; min-height: 58px; border-bottom: 1px solid var(--greyscale-200); font: 500 20px/24px var(--f-wide); }
+  .mnav .top.five { justify-content: flex-start; gap: 12px; margin-top: 16px; height: 52px; min-height: 52px; padding: 0 18px 0 14px; border: 0; border-radius: 16px; font-size: 16px; line-height: 20px; }
+  .mnav .top.five .bd-icon { width: 26px; height: 26px; }
+  .mnav .top.five { font-size: 17px; }
+  .mnav .m-actions { display: grid; gap: 10px; margin-top: 20px; }
+  .mnav .m-actions .btn { height: 52px; }
+  .mnav .m-phone { display: block; margin-top: 22px; font: 500 22px/28px var(--f-wide); }
+  .mnav .m-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 14px; }
+  .mnav .m-links a { min-height: 40px; display: inline-flex; align-items: center; font: 400 15px/20px var(--f-compact); color: var(--greyscale-500); }
+}
+@media (hover: none) {
+  .need a:hover, .pack:hover, .tile:hover, .offer:hover, .news a:hover, .tcard:hover, .mpromo:hover, .round-btn:hover, .chip:hover .icon-tile { transform: none; box-shadow: none; }
+}
+@media (max-width: 640px) {
+  .audience { overflow-x: auto; scrollbar-width: none; height: 44px; }
+  .audience::-webkit-scrollbar { display: none; }
+  .audience ul { white-space: nowrap; gap: 20px; }
+  .header-in { height: 60px; }
+  .actions .btn--secondary:not(.search) { display: none; }
+  .actions .btn--primary { height: 40px; }
+  .menu-btn { width: 40px; height: 40px; }
+  .top-white { padding-bottom: 40px; }
+  .hero { gap: 16px; margin-top: 16px; }
+  .hero-card .tag { font-size: 14px; line-height: 18px; }
+  .hero-card .btn--lg { width: 100%; }
+  .quick a { padding: 10px 8px; }
+  .chips.wrap { width: 100%; margin-inline: 0; padding-inline: var(--gutter); gap: 4px; scroll-snap-type: x proximity; margin-top: 32px; }
+  .chip { width: 92px; scroll-snap-align: start; font-size: 13px; line-height: 16px; }
+  .chip .icon-tile { width: 64px; height: 64px; border-radius: 24px; }
+  .chip .icon-tile svg { width: 32px; height: 32px; }
+  .section { margin-top: 48px; }
+  .section-head { flex-wrap: wrap; align-items: flex-start; margin-bottom: 18px; }
+  .section-head .btn { height: 40px; }
+  .tabs { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .carousel { border-radius: 32px; }
+  .slide { min-height: 340px; padding: 52px 22px 84px; }
+  .progress { left: 22px; right: 22px; top: 14px; }
+  .car-nav { right: 20px; bottom: 20px; }
+  .car-nav .round-btn { width: 40px; height: 40px; }
+  .slide .btn { position: absolute; left: 22px; bottom: 22px; }
+  .need { gap: 10px; }
+  .need a { min-height: 176px; }
+  .support { padding: 24px 20px; border-radius: 32px; }
+  .support h2 { font-size: 24px; line-height: 30px; }
+  .pills a { height: 40px; }
+  .packs { gap: 10px; }
+  .pack { min-height: 160px; }
+  .dark .wrap > .section-head { margin-bottom: 18px; }
+  .tariffs { margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); gap: 12px; }
+  .tcard { min-height: 420px; padding: 22px; }
+  .hint { font-size: 13px; line-height: 18px; }
+  .grid-tiles { gap: 10px; }
+  .tile { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; font-size: 15px; line-height: 19px; min-height: 112px; }
+  .offer { min-height: 130px; padding: 20px; font-size: 18px; line-height: 22px; border-radius: 24px; }
+  .news a { padding: 22px; min-height: 0; border-radius: 32px; }
+  .news h3 { font-size: 18px; line-height: 24px; }
+  .app { padding: 32px 22px; border-radius: 32px; }
+  .app h2 { font-size: 26px; line-height: 32px; }
+  .app .stores .btn { flex: 1; }
+  .f-grid { gap: 24px 16px; }
+  .f-grid a { display: inline-block; padding: 4px 0; }
+  .f-contact .phone-big { font-size: 22px; }
+  .footer { padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (max-width: 380px) {
+  .need { grid-template-columns: 1fr; }
+  .need a { min-height: 120px; }
+  .grid-tiles { grid-template-columns: 1fr; }
+  .tile { flex-direction: row; align-items: center; min-height: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -457,12 +586,13 @@ svg { display: block; }
     <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
     <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500"/><path d="M20 20l-4.200-4.200"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
     <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.500-4.600-7.500-10A4.300 4.300 0 0 1 12 7.500 4.300 4.300 0 0 1 19.500 10c0 5.400-7.500 10-7.500 10z" fill="currentColor"/></symbol>
   </defs>
 </svg>
 
-<div class="top-white">
+<div class="audience-bar">
   <div class="wrap audience">
     <ul>
       <li><a href="https://mobi.uz/ru/" aria-current="page">Частным клиентам</a></li>
@@ -475,11 +605,12 @@ svg { display: block; }
       <li><a href="https://mobi.uz/ru/reception/">Виртуальная приемная</a></li>
     </ul>
   </div>
+</div>
 
   <header class="header">
     <div class="wrap header-in">
       <a class="logo" href="https://mobi.uz/ru/" aria-label="Mobiuz — на главную">
-        <span class="logo-mark">M</span><span class="logo-word">mobiuz</span>
+        <svg class="logo-img" viewBox="6 13.5 176 38" role="img" aria-label="Mobiuz"><path fill="#e31e24" d="M7.53 25.54h6.98l.25 2.6c.75-.9 1.69-1.65 2.84-2.25 1.15-.6 2.5-.9 4.05-.9.94 0 1.79.1 2.53.3.74.2 1.39.46 1.95.77a8.262 8.262 0 0 1 2.5 2.18c.98-1.03 2.17-1.83 3.57-2.4 1.4-.57 2.86-.85 4.38-.85 3.04 0 5.35.85 6.96 2.55 1.6 1.71 2.4 4.03 2.4 6.96v14.53h-7.29V35.66c0-1.41-.31-2.49-.93-3.26-.63-.77-1.56-1.15-2.81-1.15-1.42 0-2.55.48-3.39 1.45-.84.97-1.27 2.2-1.27 3.71v12.62h-7.03V35.66c0-1.41-.31-2.49-.94-3.26-.62-.77-1.56-1.15-2.81-1.15-1.38 0-2.5.48-3.36 1.45-.86.97-1.29 2.2-1.29 3.71v12.62H7.53V25.54zM64.97 43.57c.91 0 1.72-.18 2.43-.53.71-.35 1.31-.83 1.8-1.43.48-.6.85-1.27 1.08-2.02.24-.76.36-1.53.36-2.33s-.12-1.58-.36-2.33c-.23-.75-.6-1.42-1.08-2a5.43 5.43 0 0 0-1.8-1.41c-.71-.35-1.52-.52-2.43-.52-.91 0-1.73.17-2.45.52-.73.35-1.33.82-1.8 1.41-.47.58-.83 1.25-1.09 2a7.34 7.34 0 0 0 0 4.66c.26.75.62 1.42 1.09 2.02.47.6 1.07 1.08 1.8 1.43.72.35 1.54.53 2.45.53zm-12.75-6.31c0-1.74.31-3.37.93-4.89.63-1.51 1.5-2.84 2.61-3.98 1.11-1.13 2.45-2.03 4.02-2.68 1.57-.65 3.3-.97 5.19-.97 1.89 0 3.61.32 5.16.97 1.55.65 2.89 1.55 4 2.68 1.11 1.14 1.98 2.47 2.61 3.98.62 1.52.93 3.15.93 4.89 0 1.73-.31 3.36-.93 4.88-.63 1.52-1.5 2.85-2.61 3.98-1.11 1.14-2.45 2.04-4 2.71-1.55.66-3.27 1-5.16 1-1.89 0-3.62-.34-5.19-1-1.57-.67-2.91-1.57-4.02-2.71a12.387 12.387 0 0 1-2.61-3.98c-.62-1.52-.93-3.15-.93-4.88zM91.39 42.86c.4.17.85.3 1.34.38.49.08 1.17.12 2.05.12 1.92 0 3.42-.61 4.48-1.85 1.06-1.23 1.59-2.85 1.59-4.86 0-.73-.09-1.45-.28-2.15-.18-.7-.46-1.33-.83-1.88-.37-.55-.85-1-1.44-1.35-.59-.35-1.31-.53-2.15-.53-1.62 0-2.82.45-3.6 1.33-.77.89-1.16 2.06-1.16 3.53v7.26zM84.1 15.17h7.29v11.67c.67-.7 1.59-1.26 2.76-1.66 1.16-.4 2.32-.6 3.46-.6 1.69 0 3.19.32 4.51.95 1.31.64 2.42 1.5 3.31 2.58.9 1.09 1.58 2.34 2.05 3.76.47 1.42.71 2.93.71 4.53 0 1.91-.31 3.66-.94 5.26-.62 1.6-1.52 2.97-2.7 4.11-1.18 1.13-2.64 2.02-4.36 2.65-1.72.64-3.67.95-5.87.95-2.02 0-3.93-.18-5.74-.55-1.81-.36-3.3-.75-4.48-1.15v-32.5zM114.82 25.54h7.29v23.49h-7.29zM129.65 25.54h7.29v13.52c0 1.34.33 2.39.98 3.15.66.77 1.63 1.16 2.91 1.16.75 0 1.4-.14 1.98-.43.57-.28 1.06-.66 1.46-1.13.41-.46.71-1.01.92-1.65.2-.63.3-1.28.3-1.95V25.54h7.24v23.49h-6.99l-.2-2.51c-.78.9-1.8 1.65-3.06 2.23-1.27.58-2.59.88-3.97.88-2.74 0-4.9-.8-6.48-2.41-1.59-1.6-2.38-3.97-2.38-7.11V25.54zM159.56 44.17l11.64-12.82h-11.13v-5.81h20.34v4.96l-11.69 12.87h11.74v5.66h-20.9zM118.33 21.79l-3.9-6.62h7.8z"/></svg>
       </a>
       <nav class="nav" aria-label="Основная навигация">
         <a href="https://mobi.uz/ru/tariff/" data-menu="tariffs" aria-haspopup="true" aria-expanded="false">Тарифы</a>
@@ -488,7 +619,7 @@ svg { display: block; }
         <a href="https://mobi.uz/ru/services/" data-menu="services" aria-haspopup="true" aria-expanded="false">Сервисы</a>
         <a href="https://mobi.uz/ru/special-offers/" data-menu="offers" aria-haspopup="true" aria-expanded="false">Акции</a>
         <a href="https://mobi.uz/ru/news/">Новости</a>
-        <a class="badge-5g" href="https://mobi.uz/ru/uslugi/5g/">Доступ к 5G</a>
+        <a class="badge-home" href="https://mobi.uz/ru/internet/home-internet/"><svg class="bd-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2V19a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 19z"/><path class="w1" d="M8 13.4c2.2-1.9 5.8-1.9 8 0"/><path class="w2" d="M10.1 15.9c1.1-.9 2.7-.9 3.8 0"/><circle class="w0" cx="12" cy="18.2" r="1.1"/></svg><span class="bd-text">MobiHome</span></a>
       </nav>
       <div class="actions">
         <a class="btn btn--secondary search" href="https://mobi.uz/ru/search/"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-search"/></svg>Поиск</a>
@@ -497,10 +628,12 @@ svg { display: block; }
         <button class="menu-btn" type="button" aria-label="Меню" aria-expanded="false"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-menu"/></svg></button>
       </div>
     </div>
+    <div class="mnav" id="mnav" aria-hidden="true"></div>
     <div class="mega" id="mega" aria-hidden="true"><div class="wrap"><div class="mega-box" id="mega-box"></div></div></div>
   </header>
   <div class="scrim" id="scrim" aria-hidden="true"></div>
 
+<div class="top-white">
   <main>
   <div class="wrap hero">
     <section class="hero-card" aria-label="Тарифы ORZU">
@@ -508,13 +641,8 @@ svg { display: block; }
         <h1>Тарифные планы ORZU — до 400 ГБ</h1>
         <span class="tag">Безлимит на мессенджеры, соцсети и звонки</span>
       </div>
-      <div><a class="btn btn--primary btn--lg" href="https://mobi.uz/ru/tariff/orzu/">Выбрать тариф</a></div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="ribbon">ORZU · ORZU · ORZU · ORZU</div>
-        <div class="coin coin--1"><span>400<small>ГБ</small></span></div>
-        <div class="coin coin--2"><span>250<small>ГБ</small></span></div>
-        <div class="coin coin--3"><span>180<small>ГБ</small></span></div>
-      </div>
+      <div><a class="btn btn--white btn--lg" href="https://mobi.uz/ru/tariff/orzu/">Выбрать тариф</a></div>
+      <div class="hero-art" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="big">400<small>ГБ</small></div></div>
     </section>
     <div class="quick">
       <a href="https://mobi.uz/ru/uslugi/online/esim/"><span class="icon-tile"><svg><use href="#i-esim"/></svg></span><span><div class="t">Подключить eSIM</div><div class="s">Онлайн-услуга</div></span></a>
@@ -526,11 +654,9 @@ svg { display: block; }
 
   <div class="wrap chips" role="list">
     <a class="chip" role="listitem" href="https://mobi.uz/ru/tariff/"><span class="icon-tile"><svg><use href="#i-sim"/></svg></span>Тарифы</a>
-    <a class="chip" role="listitem" href="https://mobi.uz/ru/tariff/orzu/"><span class="icon-tile red"><svg><use href="#i-orzu"/></svg></span>ORZU</a>
     <a class="chip" role="listitem" href="https://mobi.uz/ru/internet/"><span class="icon-tile"><svg><use href="#i-data"/></svg></span>Интернет-пакеты</a>
     <a class="chip" role="listitem" href="https://mobi.uz/ru/internet/home-internet/"><span class="icon-tile"><svg><use href="#i-home"/></svg></span>Домашний интернет</a>
     <a class="chip" role="listitem" href="https://mobi.uz/ru/uslugi/roaming/"><span class="icon-tile"><svg><use href="#i-plane"/></svg></span>Роуминг</a>
-    <a class="chip" role="listitem" href="https://mobi.uz/ru/uslugi/5g/"><span class="icon-tile red"><svg><use href="#i-5g"/></svg></span>Доступ к 5G</a>
     <a class="chip" role="listitem" href="https://mobi.uz/ru/services/apk/"><span class="icon-tile"><svg><use href="#i-app"/></svg></span>Мобильное приложение</a>
     <a class="chip" role="listitem" href="https://mobi.uz/ru/special-offers/"><span class="icon-tile"><svg><use href="#i-percent"/></svg></span>Акции</a>
   </div>
@@ -597,19 +723,6 @@ svg { display: block; }
       <a href="https://mobi.uz/ru/support/">Все темы</a>
     </div>
   </div>
-</section>
-
-<!-- Internet packs -->
-<section class="section wrap" id="internet">
-  <div class="section-head">
-    <div><h2 class="h2">Интернет-пакеты</h2><p class="h2-sub">Мне нужно больше интернета</p></div>
-    <div class="tabs" role="tablist" aria-label="Период пакета">
-      <button class="tab" role="tab" aria-selected="true" data-pack="month" type="button">В месяц</button>
-      <button class="tab" role="tab" aria-selected="false" data-pack="day" type="button">В день</button>
-    </div>
-  </div>
-  <div class="packs" id="packs"></div>
-  <div style="margin-top:24px"><a class="btn btn--secondary btn--lg" href="https://mobi.uz/ru/internet/">Все интернет-пакеты</a></div>
 </section>
 
 <!-- Dark tariffs -->
@@ -702,6 +815,19 @@ svg { display: block; }
   </div>
 </section>
 
+<!-- Internet packs -->
+<section class="section wrap" id="internet">
+  <div class="section-head">
+    <div><h2 class="h2">Интернет-пакеты</h2><p class="h2-sub">Мне нужно больше интернета</p></div>
+    <div class="tabs" role="tablist" aria-label="Период пакета">
+      <button class="tab" role="tab" aria-selected="true" data-pack="month" type="button">В месяц</button>
+      <button class="tab" role="tab" aria-selected="false" data-pack="day" type="button">В день</button>
+    </div>
+  </div>
+  <div class="packs" id="packs"></div>
+  <div style="margin-top:24px"><a class="btn btn--secondary btn--lg" href="https://mobi.uz/ru/internet/">Все интернет-пакеты</a></div>
+</section>
+
 <!-- Offers -->
 <section class="section wrap">
   <div class="section-head"><h2 class="h2">Акции</h2><a class="btn btn--secondary" href="https://mobi.uz/ru/special-offers/">Все акции</a></div>
@@ -792,18 +918,25 @@ svg { display: block; }
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
   /* Mobile menu */
-  var menuBtn = $('.menu-btn');
-  menuBtn.addEventListener('click', function () {
-    var open = document.body.classList.toggle('nav-open');
+  var menuBtn = $('.menu-btn'), mnav = $('#mnav'), hdr = $('.header');
+  function setNav(open, focusBtn) {
+    if (open) mnav.style.setProperty('--mtop', Math.max(0, Math.round(hdr.getBoundingClientRect().bottom)) + 'px');
+    document.body.classList.toggle('nav-open', open);
     menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
+    menuBtn.setAttribute('aria-label', open ? 'Закрыть меню' : 'Меню');
+    mnav.setAttribute('aria-hidden', open ? 'false' : 'true');
+    var use = $('use', menuBtn); if (use) use.setAttribute('href', open ? '#i-close' : '#i-menu');
+    if (!open && focusBtn) menuBtn.focus();
+  }
+  menuBtn.addEventListener('click', function () { setNav(!document.body.classList.contains('nav-open')); });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
-      document.body.classList.remove('nav-open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      menuBtn.focus();
-    }
+    if (e.key === 'Escape' && document.body.classList.contains('nav-open')) setNav(false, true);
   });
+  window.addEventListener('resize', function () { if (window.innerWidth > 900 && document.body.classList.contains('nav-open')) setNav(false); });
+
+  /* Sticky header shadow */
+  function stuck() { hdr.classList.toggle('is-stuck', hdr.getBoundingClientRect().top <= 0 && window.scrollY > 0); }
+  window.addEventListener('scroll', stuck, { passive: true }); stuck();
 
   /* Internet packs */
   var PACKS = {
@@ -976,6 +1109,38 @@ svg { display: block; }
   scrim.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
   window.addEventListener('resize', function () { if (!desktop()) close(); });
+
+  /* Mobile drawer menu (аккордеоны из тех же данных) */
+  var NAMES = { tariffs: 'Тарифы', internet: 'Интернет', uslugi: 'Услуги', services: 'Сервисы', offers: 'Акции' };
+  var html = '';
+  ['tariffs', 'internet', 'uslugi', 'services', 'offers'].forEach(function (k) {
+    var m = MENUS[k];
+    html += '<details><summary>' + NAMES[k] + '</summary><div class="sub">';
+    m.tiles.forEach(function (t) { html += '<a class="lead" href="' + t[1] + '">' + t[0] + '</a>'; });
+    m.cols.forEach(function (c) {
+      html += '<h5>' + c[0] + '</h5>';
+      c[1].forEach(function (l) { html += '<a href="' + l[1] + '">' + l[0] + '</a>'; });
+    });
+    html += '</div></details>';
+  });
+  html += '<a class="top" href="' + U + 'news/">Новости</a>';
+  html += '<a class="top five badge-home" href="' + U + 'internet/home-internet/"><svg class="bd-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2V19a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 19z"/><path class="w1" d="M8 13.4c2.2-1.9 5.8-1.9 8 0"/><path class="w2" d="M10.1 15.9c1.1-.9 2.7-.9 3.8 0"/><circle class="w0" cx="12" cy="18.2" r="1.1"/></svg><span class="bd-text">MobiHome</span></a>';
+  html += '<div class="m-actions"><a class="btn btn--secondary" href="' + U + 'support/">Поддержка</a>' +
+          '<a class="btn btn--primary" href="https://s.mobi.uz/asjv">Скачать приложение</a></div>';
+  html += '<a class="m-phone" href="tel:+998971300909">(+998) 97 130 09 09</a>';
+  html += '<div class="m-links"><a href="https://corp.mobi.uz/ru/">Корпоративным клиентам</a><a href="https://company.mobi.uz/ru/">О компании</a>' +
+          '<a href="https://partners.mobi.uz/ru/">Партнерам</a><a href="' + U + 'reception/">Виртуальная приемная</a></div>';
+  mnav.innerHTML = html;
+  mnav.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('a')) setNav(false); });
+
+  /* Swipe для карусели */
+  var tx = null;
+  car.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; clearTimeout(timer); }, { passive: true });
+  car.addEventListener('touchend', function (e) {
+    if (tx === null) return;
+    var dx = e.changedTouches[0].clientX - tx; tx = null;
+    show(Math.abs(dx) > 40 ? idx + (dx < 0 ? 1 : -1) : idx);
+  }, { passive: true });
 })();
 </script>
 </body>
