@@ -1,0 +1,982 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Оператор сотовой связи в Узбекистане — Mobiuz</title>
+<meta name="description" content="Выгодные тарифы мобильной связи, интернет пакеты, SIM и eSIM карты, акции, развлекательные сервисы и услуги. Оставайтесь всегда на связи вместе с Mobiuz!">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700;900&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+/* ===== Design tokens (структура и значения сняты со страницы moskva.mts.ru/personal) ===== */
+:root {
+  --greyscale-0: #ffffff;
+  --greyscale-100: #f2f3f7;
+  --greyscale-200: #e2e5eb;
+  --greyscale-300: #bbc1c7;
+  --greyscale-400: #969fa8;
+  --greyscale-500: #626c77;
+  --greyscale-600: #434a51;
+  --greyscale-700: #2c3135;
+  --greyscale-800: #1d2023;
+
+  --brand: #ff0032;
+  --brand-dark: #e00029;
+  --link: #0070e5;
+  --blackberry-lightest: #e7eafa;
+  --blackberry-light: #6384e0;
+  --blackberry-normal: #014fce;
+  --night: #25273a;
+  --lavender: #888fb5;
+  --lime: #c1eb1d;
+  --mint: #00c19b;
+
+  --text: #1d2023;
+  --text-2: #626c77;
+
+  --r-btn: 16px;
+  --r-s: 24px;
+  --r-card: 40px;
+  --r-section: 64px;
+  --r-dark: 80px;
+
+  --shadow-lowest: 0 0 6px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.08);
+  --shadow-low: 0 0 16px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.08);
+  --shadow-middle: 0 4px 24px rgba(0,0,0,.12), 0 8px 16px rgba(0,0,0,.08);
+
+  --f-compact: "Fira Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --f-wide: "Fira Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  --wrap: 1200px;
+  --gutter: 24px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--greyscale-100);
+  color: var(--text);
+  font: 400 17px/24px var(--f-compact);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; padding: 0; }
+h1, h2, h3, p, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+svg { display: block; }
+:focus-visible { outline: 2px solid var(--blackberry-normal); outline-offset: 3px; }
+
+.wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 44px; padding: 0 18px; border-radius: var(--r-btn);
+  font: 700 12px/16px var(--f-wide); letter-spacing: .04em; text-transform: uppercase;
+  white-space: nowrap; transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.btn--primary { background: var(--brand); color: #fff; }
+.btn--primary:hover { background: var(--brand-dark); }
+.btn--secondary { background: var(--greyscale-100); color: var(--text); }
+.btn--secondary:hover { background: var(--greyscale-200); }
+.btn--white { background: #fff; color: var(--text); }
+.btn--white:hover { box-shadow: var(--shadow-low); }
+.btn--lg { height: 52px; padding: 0 28px; }
+
+.round-btn {
+  display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+  background: #fff; color: var(--text); box-shadow: var(--shadow-lowest); transition: transform .2s ease;
+}
+.round-btn:hover { transform: scale(1.06); }
+
+/* ===== Top bars ===== */
+.top-white { background: #fff; border-radius: 0 0 var(--r-section) var(--r-section); padding-bottom: 56px; }
+.audience {
+  display: flex; align-items: center; justify-content: space-between; height: 40px;
+  font: 500 14px/20px var(--f-compact);
+}
+.audience ul { display: flex; gap: 24px; }
+.audience .right { gap: 20px; }
+.audience a { color: var(--greyscale-500); transition: color .2s; }
+.audience a:hover, .audience a[aria-current] { color: var(--text); }
+.audience a[aria-current] { font-weight: 700; }
+.audience .right a { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
+
+.header { position: sticky; top: 0; z-index: 50; background: #fff; }
+.header-in { display: flex; align-items: center; gap: 24px; height: 64px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; flex: none; }
+.logo-mark {
+  width: 40px; height: 40px; border-radius: 8px; background: var(--brand); color: #fff;
+  display: grid; place-items: center; font: 700 22px/1 var(--f-wide);
+}
+.logo-word { font: 700 22px/1 var(--f-wide); letter-spacing: -.01em; }
+.nav { display: flex; align-items: center; gap: 4px; margin-right: auto; }
+.nav a { padding: 8px 12px; font: 500 14px/20px var(--f-compact); color: #000; border-radius: 12px; transition: background-color .2s; }
+.nav a:hover { background: var(--greyscale-100); }
+.nav .badge-5g {
+  display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; height: 28px; padding: 0 12px; border-radius: 10px;
+  background: linear-gradient(90deg, #3a3f66, #1f2136); color: #fff; font: 700 12px/16px var(--f-wide); text-transform: uppercase;
+}
+.nav .badge-5g:hover { background: linear-gradient(90deg, #4a5080, #2b2e4a); }
+.actions { display: flex; align-items: center; gap: 8px; }
+.menu-btn { display: none; width: 44px; height: 44px; border-radius: var(--r-btn); background: var(--greyscale-100); place-items: center; }
+
+/* ===== Hero ===== */
+.hero { display: grid; grid-template-columns: 1fr 340px; gap: 32px; margin-top: 24px; }
+.hero-card {
+  position: relative; overflow: hidden; min-height: 348px; border-radius: var(--r-card); padding: 40px;
+  background:
+    radial-gradient(194.9% 141.42% at 0% 0%, rgba(194,211,253,.95) 0%, rgba(231,234,250,.9) 45%, rgba(246,247,252,1) 100%);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.hero-card h1 { font: 500 34px/40px var(--f-wide); max-width: 440px; letter-spacing: -.01em; }
+.hero-card .tag {
+  display: inline-block; margin-top: 16px; padding: 4px 10px; border-radius: 8px; background: rgba(255,255,255,.7);
+  font: 500 13px/16px var(--f-compact);
+}
+.hero-art { position: absolute; right: -10px; top: 0; bottom: 0; width: 46%; pointer-events: none; }
+.coin {
+  position: absolute; display: grid; place-items: center; border-radius: 50%; color: #fff; font: 700 28px/1 var(--f-wide);
+  box-shadow: inset -10px -12px 24px rgba(0,0,0,.18), inset 8px 8px 18px rgba(255,255,255,.45), 0 18px 40px rgba(60,70,140,.25);
+}
+.coin small { display: block; font: 500 12px/14px var(--f-compact); opacity: .9; text-align: center; }
+.coin--1 { width: 190px; height: 190px; right: 150px; top: 36px; background: radial-gradient(circle at 30% 25%, #ff6b86, var(--brand) 60%, #b8001f); }
+.coin--2 { width: 150px; height: 150px; right: 30px; top: 150px; background: radial-gradient(circle at 30% 25%, #9ab0ff, #4c6be0 60%, #2a3f9e); }
+.coin--3 { width: 110px; height: 110px; right: 200px; top: 220px; background: radial-gradient(circle at 30% 25%, #6ef0d6, var(--mint) 60%, #057a62); }
+.ribbon {
+  position: absolute; right: -40px; top: 120px; width: 520px; padding: 10px 0; transform: rotate(-24deg);
+  background: rgba(255,255,255,.55); backdrop-filter: blur(6px); font: 900 16px/20px var(--f-wide); letter-spacing: .12em;
+  text-transform: uppercase; color: rgba(30,32,50,.78); white-space: nowrap; text-align: center;
+}
+
+.quick { display: grid; gap: 4px; align-content: start; }
+.quick a {
+  display: flex; align-items: center; gap: 16px; padding: 12px; border-radius: 24px; transition: background-color .2s;
+}
+.quick a:hover { background: var(--greyscale-100); }
+.quick .t { font: 500 17px/22px var(--f-compact); }
+.quick .s { font: 400 14px/18px var(--f-compact); color: var(--text-2); margin-top: 2px; }
+
+.icon-tile {
+  flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 18px;
+  background: linear-gradient(150deg, #f1f2fb 0%, #d7dbf3 100%); color: #7c85c4;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.8);
+}
+.icon-tile svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.icon-tile.red { color: var(--brand); }
+
+/* ===== Chip row ===== */
+.chips { display: flex; justify-content: space-between; gap: 8px; margin-top: 48px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { display: grid; justify-items: center; gap: 12px; width: 112px; flex: none; text-align: center; font: 400 14px/18px var(--f-compact); }
+.chip .icon-tile { width: 76px; height: 76px; border-radius: 28px; transition: transform .25s ease; }
+.chip:hover .icon-tile { transform: translateY(-3px); }
+.chip .icon-tile svg { width: 38px; height: 38px; }
+.chip .plus {
+  position: absolute; top: -8px; right: -10px; padding: 2px 6px; border-radius: 6px; background: var(--lime); color: var(--text); font: 700 9px/12px var(--f-wide);
+}
+
+/* ===== Sections ===== */
+.section { margin-top: 64px; }
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.h2 { font: 500 36px/44px var(--f-wide); letter-spacing: -.015em; }
+.h2-sub { margin-top: 8px; color: var(--text-2); }
+
+/* Promo carousel */
+.carousel { position: relative; border-radius: var(--r-card); overflow: hidden; }
+.progress { position: absolute; z-index: 3; left: 32px; right: 32px; top: 16px; display: flex; gap: 6px; }
+.progress i { flex: 1; height: 3px; border-radius: 2px; background: rgba(255,255,255,.55); overflow: hidden; display: block; }
+.progress i::after { content: ""; display: block; height: 100%; width: 0; background: #fff; }
+.progress i.done::after { width: 100%; }
+.progress i.on::after { animation: fill 6s linear forwards; }
+@keyframes fill { to { width: 100%; } }
+.track { display: flex; transition: transform .6s cubic-bezier(.16,1,.3,1); }
+.slide { position: relative; flex: none; width: 100%; min-height: 330px; padding: 56px 56px 40px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; overflow: hidden; }
+.slide h3 { font: 500 34px/40px var(--f-wide); max-width: 520px; letter-spacing: -.01em; }
+.slide p { margin-top: 12px; max-width: 480px; font: 500 18px/24px var(--f-compact); opacity: .95; }
+.slide--a { background: linear-gradient(120deg, #8fa7ee 0%, #b3c6f6 55%, #d6e0fb 100%); color: #11183a; }
+.slide--b { background: linear-gradient(120deg, #1f2a6b 0%, #3453c7 60%, #5f7fe8 100%); }
+.slide--c { background: linear-gradient(120deg, #c4002a 0%, #ff0032 55%, #ff5a78 100%); }
+.slide--d { background: linear-gradient(120deg, #00725e 0%, #00a584 55%, #4be0c0 100%); }
+.slide .orb { position: absolute; border-radius: 50%; pointer-events: none; }
+.slide .orb.o1 { width: 380px; height: 380px; right: -60px; top: -80px; background: rgba(255,255,255,.14); }
+.slide .orb.o2 { width: 220px; height: 220px; right: 200px; bottom: -90px; background: rgba(255,255,255,.12); }
+.slide .big { position: absolute; right: 64px; bottom: 28px; font: 900 120px/1 var(--f-wide); letter-spacing: -.04em; opacity: .22; pointer-events: none; }
+.car-nav { position: absolute; z-index: 3; right: 32px; bottom: 32px; display: flex; gap: 8px; }
+
+/* Needed cards */
+.need { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.need a {
+  position: relative; min-height: 230px; padding: 24px; border-radius: var(--r-card); background: #fff; overflow: hidden;
+  font: 500 19px/22px var(--f-wide); transition: transform .25s ease, box-shadow .25s ease;
+}
+.need a:hover { transform: translateY(-4px); box-shadow: var(--shadow-middle); }
+.need .icon-tile { position: absolute; right: 20px; bottom: 20px; width: 72px; height: 72px; border-radius: 50%; }
+.need .icon-tile svg { width: 34px; height: 34px; }
+.need .feature { background: var(--lavender); color: #fff; }
+.need .feature .pill { position: absolute; left: 24px; bottom: 24px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 12px; background: #fff; color: var(--text); font: 500 13px/16px var(--f-compact); }
+.need .feature .heart { color: var(--brand); }
+
+/* Support */
+.support { display: grid; grid-template-columns: 1fr 1.4fr; gap: 24px; align-items: center; padding: 40px 48px; border-radius: var(--r-card); background: #fff; }
+.support h2 { font: 500 28px/34px var(--f-wide); }
+.support p { margin-top: 8px; font-size: 14px; line-height: 18px; color: var(--text-2); }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pills a { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; border-radius: 12px; background: var(--greyscale-100); font: 500 13px/16px var(--f-compact); transition: background-color .2s; }
+.pills a:hover { background: var(--greyscale-200); }
+
+/* Internet packs */
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+.tab { height: 40px; padding: 0 20px; border-radius: 14px; font: 500 15px/20px var(--f-compact); color: inherit; transition: background-color .2s, color .2s; }
+.tab:hover { background: rgba(0,0,0,.05); }
+.tab[aria-selected="true"] { background: #fff; color: var(--text); box-shadow: var(--shadow-lowest); }
+.packs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.pack { display: flex; flex-direction: column; justify-content: space-between; min-height: 190px; padding: 24px; border-radius: var(--r-s); background: #fff; transition: transform .25s ease, box-shadow .25s ease; }
+.pack:hover { transform: translateY(-4px); box-shadow: var(--shadow-middle); }
+.pack .vol { font: 500 30px/34px var(--f-wide); letter-spacing: -.02em; }
+.pack .vol small { font: 500 15px/20px var(--f-compact); letter-spacing: 0; color: var(--text-2); margin-left: 4px; }
+.pack .code { margin-top: 6px; font: 400 14px/18px var(--f-compact); color: var(--text-2); }
+.pack .price { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; font: 700 17px/22px var(--f-wide); }
+.pack .price small { font: 400 13px/16px var(--f-compact); color: var(--text-2); }
+
+/* Dark tariffs section */
+.dark { margin-top: 80px; padding: 80px 0 88px; background: var(--night); color: #fff; border-radius: var(--r-dark); }
+.dark .tabs .tab:hover { background: rgba(255,255,255,.1); }
+.dark .tab[aria-selected="true"] { background: #fff; color: var(--text); }
+.tariffs { display: grid; grid-auto-flow: column; grid-auto-columns: 288px; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 4px 0 8px; }
+.tariffs::-webkit-scrollbar { display: none; }
+.tariffs[hidden] { display: none; }
+.tcard {
+  position: relative; scroll-snap-align: start; display: flex; flex-direction: column; min-height: 440px; padding: 24px; border-radius: var(--r-card); overflow: hidden;
+  transition: transform .25s ease;
+}
+.tcard:hover { transform: translateY(-4px); }
+.tcard::after { content: ""; position: absolute; right: -70px; top: -70px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,.12); pointer-events: none; }
+.tcard.g1 { background: linear-gradient(160deg, #3a3f6e, #6b73a8); }
+.tcard.g2 { background: linear-gradient(160deg, #5a4c8a, #9a8fc7); }
+.tcard.g3 { background: linear-gradient(160deg, #2c5a7a, #6aa0c4); }
+.tcard.g4 { background: linear-gradient(160deg, #6a3550, #c47c9a); }
+.tcard.g5 { background: linear-gradient(160deg, #3d4a6a, #8a98bd); }
+.tcard h3 { font: 500 17px/22px var(--f-wide); }
+.tcard .gb { margin-top: 14px; font: 500 44px/48px var(--f-wide); letter-spacing: -.03em; }
+.tcard .gb small { display: block; margin-top: 4px; font: 400 14px/18px var(--f-compact); opacity: .85; letter-spacing: 0; }
+.tcard ul { margin-top: 18px; display: grid; gap: 8px; font-size: 14px; line-height: 18px; opacity: .95; }
+.tcard li { display: flex; gap: 8px; }
+.tcard li::before { content: ""; flex: none; width: 6px; height: 6px; margin-top: 6px; border-radius: 50%; background: var(--lime); }
+.tcard .foot { margin-top: auto; padding-top: 20px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.tcard .price { font: 700 22px/26px var(--f-wide); }
+.tcard .price small { display: block; font: 400 13px/16px var(--f-compact); opacity: .85; }
+.hint { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,.7); }
+
+/* Services & offers */
+.grid-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.tile { display: flex; align-items: center; gap: 16px; padding: 20px; border-radius: var(--r-s); background: #fff; font: 500 16px/20px var(--f-compact); transition: transform .25s ease, box-shadow .25s ease; }
+.tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-low); }
+.tile .icon-tile { width: 48px; height: 48px; border-radius: 16px; }
+.offers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.offer { display: flex; flex-direction: column; justify-content: space-between; min-height: 150px; padding: 24px; border-radius: var(--r-s); background: #fff; font: 500 19px/24px var(--f-wide); transition: transform .25s ease, box-shadow .25s ease; }
+.offer:hover { transform: translateY(-3px); box-shadow: var(--shadow-low); }
+.offer span { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font: 500 14px/18px var(--f-compact); color: var(--link); }
+
+/* News */
+.news { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.news a { display: flex; flex-direction: column; gap: 12px; padding: 28px; border-radius: var(--r-card); background: #fff; min-height: 190px; transition: transform .25s ease, box-shadow .25s ease; }
+.news a:hover { transform: translateY(-4px); box-shadow: var(--shadow-middle); }
+.news time { font: 400 14px/18px var(--f-compact); color: var(--text-2); }
+.news h3 { font: 500 20px/26px var(--f-wide); }
+
+/* App block */
+.app { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; padding: 56px; border-radius: var(--r-card); background: linear-gradient(120deg, #e7eafa, #c5cdf3); }
+.app h2 { font: 500 32px/40px var(--f-wide); letter-spacing: -.01em; }
+.app p { margin-top: 12px; max-width: 460px; color: var(--greyscale-600); }
+.app .stores { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.app .phone { align-self: center; justify-self: center; width: 200px; height: 300px; border-radius: 36px; background: #1d2023; padding: 10px; box-shadow: var(--shadow-middle); transform: rotate(6deg); }
+.app .phone div { height: 100%; border-radius: 28px; background: linear-gradient(160deg, var(--brand), #7a1030); color: #fff; display: grid; place-items: center; text-align: center; font: 700 24px/28px var(--f-wide); padding: 16px; }
+.app .phone small { display: block; margin-top: 8px; font: 400 13px/16px var(--f-compact); opacity: .9; }
+
+/* Footer */
+.footer { margin-top: 80px; padding: 56px 0 40px; background: #fff; border-radius: var(--r-section) var(--r-section) 0 0; }
+.f-grid { display: grid; grid-template-columns: 1.3fr repeat(4, 1fr); gap: 32px; }
+.f-grid h4 { margin: 0 0 14px; font: 700 14px/18px var(--f-wide); }
+.f-grid li { margin-bottom: 8px; }
+.f-grid a { font-size: 15px; line-height: 20px; color: var(--greyscale-600); transition: color .2s; }
+.f-grid a:hover { color: var(--brand); }
+.f-contact .phone-big { font: 500 24px/30px var(--f-wide); display: inline-block; margin-bottom: 8px; }
+.f-contact p { font-size: 14px; line-height: 20px; color: var(--text-2); }
+.socials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.socials a { display: inline-grid; place-items: center; height: 36px; padding: 0 12px; border-radius: 12px; background: var(--greyscale-100); font: 500 13px/16px var(--f-compact); color: var(--text); }
+.socials a:hover { background: var(--greyscale-200); color: var(--text); }
+.f-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--greyscale-200); font-size: 13px; line-height: 18px; color: var(--text-2); }
+
+/* ===== Mega menu (как в МТС) ===== */
+.audience { position: relative; z-index: 45; }
+.scrim {
+  position: fixed; inset: 0; z-index: 40; background: rgba(40,42,48,.55);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility .25s ease;
+}
+.scrim.on { opacity: 1; visibility: visible; }
+.nav a.is-open { background: var(--greyscale-100); }
+.mega {
+  position: absolute; left: 0; right: 0; top: 100%; padding-top: 12px;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .2s ease, transform .25s cubic-bezier(.16,1,.3,1), visibility .2s;
+}
+.mega.on { opacity: 1; visibility: visible; transform: none; }
+.mega-box {
+  position: relative; display: grid; grid-template-columns: 288px 1fr 1fr 288px; gap: 32px;
+  padding: 28px 28px 28px 32px; background: #fff; border-radius: 40px;
+  box-shadow: 0 0 0 3px rgba(255,255,255,.85), 0 4px 24px rgba(0,0,0,.12), 0 12px 20px rgba(0,0,0,.14);
+}
+.notch {
+  position: absolute; top: -7px; left: 60px; width: 16px; height: 16px; background: #fff;
+  border-radius: 3px; transform: translateX(-50%) rotate(45deg); transition: left .25s cubic-bezier(.16,1,.3,1);
+}
+.mtiles { display: grid; grid-template-rows: 1fr 1fr; gap: 16px; }
+.mtile {
+  display: flex; flex-direction: column; justify-content: space-between; min-height: 160px; padding: 18px 18px 16px 16px;
+  border-radius: 24px; background: var(--greyscale-100); font: 500 21px/24px var(--f-wide); letter-spacing: -.01em;
+  transition: background-color .2s ease, transform .25s ease;
+}
+.mtile:hover { background: var(--greyscale-200); transform: translateY(-2px); }
+.mtile .icon-tile { align-self: flex-end; width: 56px; height: 56px; border-radius: 20px; }
+.mtile .icon-tile svg { width: 30px; height: 30px; }
+.mcol { padding-top: 6px; }
+.mcol h4 { margin: 0 0 18px; font: 700 12px/16px var(--f-wide); letter-spacing: .08em; text-transform: uppercase; color: var(--greyscale-400); }
+.mcol a { display: block; padding: 10px 0; font: 400 17px/24px var(--f-compact); transition: color .2s ease, transform .2s ease; }
+.mcol a:hover { color: var(--brand); transform: translateX(3px); }
+.mpromo {
+  position: relative; display: flex; flex-direction: column; min-height: 320px; padding: 22px 22px 18px;
+  border-radius: 32px; color: #fff; overflow: hidden; transition: transform .25s ease;
+}
+.mpromo:hover { transform: translateY(-2px); }
+.mpromo::before { content: ""; position: absolute; right: -60px; top: 90px; width: 240px; height: 240px; border-radius: 50%; background: rgba(255,255,255,.1); }
+.mpromo::after { content: ""; position: absolute; left: -50px; bottom: 30px; width: 150px; height: 150px; border-radius: 50%; background: rgba(255,255,255,.08); }
+.mpromo strong { position: relative; z-index: 1; font: 500 22px/26px var(--f-wide); letter-spacing: -.01em; }
+.mpromo span { position: relative; z-index: 1; margin-top: 10px; font: 400 13px/18px var(--f-compact); opacity: .92; }
+.mpromo em {
+  position: relative; z-index: 1; margin-top: auto; height: 40px; display: grid; place-items: center; border-radius: 14px;
+  background: rgba(255,255,255,.2); font: 700 12px/16px var(--f-wide); font-style: normal; letter-spacing: .04em; text-transform: uppercase;
+  transition: background-color .2s ease;
+}
+.mpromo:hover em { background: rgba(255,255,255,.3); }
+.mpromo.p1 { background: linear-gradient(160deg, #2b2e48, #5d6490); }
+.mpromo.p2 { background: linear-gradient(160deg, #24557f, #7fa8d6); }
+.mpromo.p3 { background: linear-gradient(160deg, #b8001f, #ff4d6d); }
+.mpromo.p4 { background: linear-gradient(160deg, #00604f, #2fc4a3); }
+.mpromo.p5 { background: linear-gradient(160deg, #3f3580, #9a90d8); }
+@media (max-width: 900px) { .mega, .scrim { display: none !important; } }
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px) {
+  .hero { grid-template-columns: 1fr; }
+  .quick { grid-template-columns: 1fr 1fr; }
+  .need { grid-template-columns: repeat(3, 1fr); }
+  .packs, .grid-tiles { grid-template-columns: repeat(2, 1fr); }
+  .f-grid { grid-template-columns: repeat(3, 1fr); }
+  .f-contact { grid-column: 1 / -1; }
+}
+@media (max-width: 900px) {
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; margin: 0; padding: 12px var(--gutter) 20px; background: #fff; box-shadow: var(--shadow-middle); border-radius: 0 0 24px 24px; }
+  .nav a { padding: 14px 12px; font-size: 17px; }
+  .nav .badge-5g { margin: 8px 0 0; width: fit-content; }
+  body.nav-open .nav { display: flex; }
+  .menu-btn { display: grid; }
+  .header-in { gap: 12px; }
+  .actions { margin-left: auto; }
+  .actions .btn--secondary.search { display: none; }
+  .audience .right { display: none; }
+  .support { grid-template-columns: 1fr; padding: 32px; }
+  .app { grid-template-columns: 1fr; padding: 40px 32px; }
+  .app .phone { display: none; }
+  .news, .offers { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  :root { --gutter: 16px; }
+  .top-white { border-radius: 0 0 40px 40px; padding-bottom: 40px; }
+  .hero-card { padding: 28px 24px; min-height: 320px; }
+  .hero-card h1 { font-size: 26px; line-height: 32px; }
+  .hero-art { opacity: .55; width: 70%; }
+  .quick { grid-template-columns: 1fr; }
+  .h2 { font-size: 28px; line-height: 34px; }
+  .slide { padding: 56px 24px 88px; }
+  .slide h3 { font-size: 26px; line-height: 32px; }
+  .slide .big { font-size: 80px; right: 24px; }
+  .need { grid-template-columns: repeat(2, 1fr); }
+  .need a { min-height: 190px; padding: 18px; font-size: 16px; line-height: 20px; border-radius: 32px; }
+  .need .icon-tile { width: 56px; height: 56px; right: 14px; bottom: 14px; }
+  .packs, .grid-tiles { grid-template-columns: 1fr 1fr; }
+  .pack { padding: 18px; }
+  .pack .vol { font-size: 24px; line-height: 28px; }
+  .dark { border-radius: 48px; padding: 56px 0 64px; margin-top: 56px; }
+  .tariffs { grid-auto-columns: 82%; }
+  .f-grid { grid-template-columns: 1fr 1fr; }
+  .footer { border-radius: 40px 40px 0 0; }
+  .logo-word { font-size: 20px; }
+  .actions .btn--primary { padding: 0 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .progress i.on::after { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- SVG sprite: простые контурные иконки в стиле плиток -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-sim" viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><rect x="9" y="12" width="6" height="6" rx="1.5"/></symbol>
+    <symbol id="i-orzu" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-data" viewBox="0 0 24 24"><path d="M4 8c4-4.5 12-4.5 16 0M7 11.5c2.8-2.8 7.2-2.8 10 0M10 15c1.2-1.2 2.8-1.2 4 0"/><circle cx="12" cy="18.5" r="1.2"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M9 15c1.7-1.6 4.3-1.6 6 0M10.8 17.6c.7-.6 1.7-.6 2.4 0"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-6.5 18-3.5-7-7-3.5z"/></symbol>
+    <symbol id="i-5g" viewBox="0 0 24 24"><path d="M10 7H5v5h4a2.5 2.5 0 1 1 0 5H4"/><path d="M20 8.5c-.6-1-1.6-1.5-2.8-1.5-2 0-3.2 1.7-3.2 5s1.2 5 3.2 5c1.8 0 3-1.2 3-3h-3"/></symbol>
+    <symbol id="i-app" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+    <symbol id="i-percent" viewBox="0 0 24 24"><path d="M19 5L5 19"/><circle cx="7.5" cy="7.5" r="2.3"/><circle cx="16.5" cy="16.5" r="2.3"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18M16 14.5h2"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5l3 .8.8 3.5-2 1.4a12 12 0 0 0 5.5 5.5l1.4-2 3.5.8.8 3-2 2a3 3 0 0 1-2.5.8C9.5 18.4 5.6 14.5 4.2 8.8a3 3 0 0 1 .8-2.5z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-hash" viewBox="0 0 24 24"><path d="M9 4L7 20M17 4l-2 16M4.5 9h16M3.500 15h16"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="7" cy="18" r="2.5"/><circle cx="17" cy="16" r="2.5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.5 9.500l4.500 2.500-4.500 2.500z"/></symbol>
+    <symbol id="i-game" viewBox="0 0 24 24"><rect x="2.500" y="7" width="19" height="10" rx="5"/><path d="M8 10v4M6 12h4M16 11.500h.01M18 13.500h.01"/></symbol>
+    <symbol id="i-kid" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.500"/><path d="M5 20c.8-4 3.500-6 7-6s6.200 2 7 6"/></symbol>
+    <symbol id="i-sos" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.500-3.200 7.800-8 9-4.800-1.200-8-4.500-8-9V6z"/><path d="M12 8v5M12 16h.01"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3.500" y="9" width="17" height="11" rx="2"/><path d="M12 9v11M3.500 13h17M12 9c-3 0-5-1-4.500-3 .5-1.800 3.500-1.500 4.500 3zm0 0c3 0 5-1 4.500-3-.5-1.800-3.500-1.500-4.500 3z"/></symbol>
+    <symbol id="i-esim" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M10 9.500h4M10 12h4M10 14.500h3"/></symbol>
+    <symbol id="i-number" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16M9.500 4L8 20M16 4l-1.500 16"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h14l-3-3M20 16H6l3 3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500"/><path d="M20 20l-4.200-4.200"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.500-4.600-7.500-10A4.300 4.300 0 0 1 12 7.500 4.300 4.300 0 0 1 19.500 10c0 5.400-7.500 10-7.500 10z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<div class="top-white">
+  <div class="wrap audience">
+    <ul>
+      <li><a href="https://mobi.uz/ru/" aria-current="page">Частным клиентам</a></li>
+      <li><a href="https://corp.mobi.uz/ru/">Корпоративным клиентам</a></li>
+      <li><a href="https://company.mobi.uz/ru/">О компании</a></li>
+      <li><a href="https://partners.mobi.uz/ru/">Партнерам</a></li>
+    </ul>
+    <ul class="right">
+      <li><a href="https://company.mobi.uz/ru/zones/"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pin"/></svg>Карта покрытия сети</a></li>
+      <li><a href="https://mobi.uz/ru/reception/">Виртуальная приемная</a></li>
+    </ul>
+  </div>
+
+  <header class="header">
+    <div class="wrap header-in">
+      <a class="logo" href="https://mobi.uz/ru/" aria-label="Mobiuz — на главную">
+        <span class="logo-mark">M</span><span class="logo-word">mobiuz</span>
+      </a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="https://mobi.uz/ru/tariff/" data-menu="tariffs" aria-haspopup="true" aria-expanded="false">Тарифы</a>
+        <a href="https://mobi.uz/ru/internet/" data-menu="internet" aria-haspopup="true" aria-expanded="false">Интернет</a>
+        <a href="https://mobi.uz/ru/uslugi/" data-menu="uslugi" aria-haspopup="true" aria-expanded="false">Услуги</a>
+        <a href="https://mobi.uz/ru/services/" data-menu="services" aria-haspopup="true" aria-expanded="false">Сервисы</a>
+        <a href="https://mobi.uz/ru/special-offers/" data-menu="offers" aria-haspopup="true" aria-expanded="false">Акции</a>
+        <a href="https://mobi.uz/ru/news/">Новости</a>
+        <a class="badge-5g" href="https://mobi.uz/ru/uslugi/5g/">Доступ к 5G</a>
+      </nav>
+      <div class="actions">
+        <a class="btn btn--secondary search" href="https://mobi.uz/ru/search/"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-search"/></svg>Поиск</a>
+        <a class="btn btn--secondary" href="https://mobi.uz/ru/support/">Поддержка</a>
+        <a class="btn btn--primary" href="https://mobi.uz/ru/">Пополнить</a>
+        <button class="menu-btn" type="button" aria-label="Меню" aria-expanded="false"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-menu"/></svg></button>
+      </div>
+    </div>
+    <div class="mega" id="mega" aria-hidden="true"><div class="wrap"><div class="mega-box" id="mega-box"></div></div></div>
+  </header>
+  <div class="scrim" id="scrim" aria-hidden="true"></div>
+
+  <main>
+  <div class="wrap hero">
+    <section class="hero-card" aria-label="Тарифы ORZU">
+      <div>
+        <h1>Тарифные планы ORZU — до 400 ГБ</h1>
+        <span class="tag">Безлимит на мессенджеры, соцсети и звонки</span>
+      </div>
+      <div><a class="btn btn--primary btn--lg" href="https://mobi.uz/ru/tariff/orzu/">Выбрать тариф</a></div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="ribbon">ORZU · ORZU · ORZU · ORZU</div>
+        <div class="coin coin--1"><span>400<small>ГБ</small></span></div>
+        <div class="coin coin--2"><span>250<small>ГБ</small></span></div>
+        <div class="coin coin--3"><span>180<small>ГБ</small></span></div>
+      </div>
+    </section>
+    <div class="quick">
+      <a href="https://mobi.uz/ru/uslugi/online/esim/"><span class="icon-tile"><svg><use href="#i-esim"/></svg></span><span><div class="t">Подключить eSIM</div><div class="s">Онлайн-услуга</div></span></a>
+      <a href="https://mobi.uz/ru/uslugi/mnp/"><span class="icon-tile red"><svg><use href="#i-swap"/></svg></span><span><div class="t">Перейти со своим номером</div><div class="s">Сохраните номер при переходе</div></span></a>
+      <a href="https://mobi.uz/ru/uslugi/online/booking/"><span class="icon-tile"><svg><use href="#i-number"/></svg></span><span><div class="t">Забронировать номер</div><div class="s">Онлайн бронирование</div></span></a>
+      <a href="https://mobi.uz/ru/uslugi/online/replacement-sim/"><span class="icon-tile"><svg><use href="#i-sim"/></svg></span><span><div class="t">Заменить SIM на eSIM</div><div class="s">Онлайн-услуга</div></span></a>
+    </div>
+  </div>
+
+  <div class="wrap chips" role="list">
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/tariff/"><span class="icon-tile"><svg><use href="#i-sim"/></svg></span>Тарифы</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/tariff/orzu/"><span class="icon-tile red"><svg><use href="#i-orzu"/></svg></span>ORZU</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/internet/"><span class="icon-tile"><svg><use href="#i-data"/></svg></span>Интернет-пакеты</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/internet/home-internet/"><span class="icon-tile"><svg><use href="#i-home"/></svg></span>Домашний интернет</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/uslugi/roaming/"><span class="icon-tile"><svg><use href="#i-plane"/></svg></span>Роуминг</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/uslugi/5g/"><span class="icon-tile red"><svg><use href="#i-5g"/></svg></span>Доступ к 5G</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/services/apk/"><span class="icon-tile"><svg><use href="#i-app"/></svg></span>Мобильное приложение</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/special-offers/"><span class="icon-tile"><svg><use href="#i-percent"/></svg></span>Акции</a>
+  </div>
+  </main>
+</div>
+
+<!-- Promo carousel -->
+<section class="section wrap" aria-label="Акции и новости" style="margin-top:48px">
+  <div class="carousel" id="carousel">
+    <div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="track">
+      <article class="slide slide--a">
+        <div class="orb o1"></div><div class="orb o2"></div><div class="big">5G</div>
+        <div><h3>Самый быстрый интернет и отличная связь</h3><p>Подключите доступ к 5G</p></div>
+        <div><a class="btn btn--white" href="https://mobi.uz/ru/uslugi/5g/">Подключить</a></div>
+      </article>
+      <article class="slide slide--b">
+        <div class="orb o1"></div><div class="orb o2"></div><div class="big">A07</div>
+        <div><h3>Купите Samsung Galaxy A07 — получайте подарки!</h3><p>Адаптер Basues 20W + ORZU на 3 месяца бесплатно</p></div>
+        <div><a class="btn btn--white" href="https://mobi.uz/ru/special-offers/smartphone_discount/">Подробнее</a></div>
+      </article>
+      <article class="slide slide--c">
+        <div class="orb o1"></div><div class="orb o2"></div><div class="big">SOS</div>
+        <div><h3>Экстренная помощь охраны при МВД</h3><p>Теперь доступно в приложении Mobiuz</p></div>
+        <div><a class="btn btn--white" href="https://mobi.uz/ru/services/sos/">Подробнее</a></div>
+      </article>
+      <article class="slide slide--d">
+        <div class="orb o1"></div><div class="orb o2"></div><div class="big">М</div>
+        <div><h3>Будь на связи в метро — на станциях и в тоннеле!</h3><p>Покрытие Mobiuz в метро</p></div>
+        <div><a class="btn btn--white" href="https://mobi.uz/ru/news/2026/101367/">Подробнее</a></div>
+      </article>
+    </div>
+    <div class="car-nav">
+      <button class="round-btn" type="button" id="prev" aria-label="Назад"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-left"/></svg></button>
+      <button class="round-btn" type="button" id="next" aria-label="Вперёд"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-right"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- Самое нужное -->
+<section class="section wrap">
+  <div class="section-head"><h2 class="h2">Самое нужное</h2></div>
+  <div class="need">
+    <a href="https://mobi.uz/ru/uslugi/account/">Пополнить баланс<span class="icon-tile"><svg><use href="#i-wallet"/></svg></span></a>
+    <a href="https://mobi.uz/ru/support/self-service/moi-rashody/">Мои расходы<span class="icon-tile"><svg><use href="#i-chart"/></svg></span></a>
+    <a href="https://mobi.uz/ru/support/self-service/kontakt-centr/">Контактный центр<span class="icon-tile"><svg><use href="#i-phone"/></svg></span></a>
+    <a href="https://mobi.uz/ru/support/offices/">Офисы Mobiuz<span class="icon-tile"><svg><use href="#i-pin"/></svg></span></a>
+    <a href="https://mobi.uz/ru/support/self-service/mobilnyj-portal/">Мобильный портал *111#<span class="icon-tile"><svg><use href="#i-hash"/></svg></span></a>
+    <a class="feature" href="https://s.mobi.uz/asjv">Скачать приложение Mobiuz<span class="pill"><span class="heart"><svg width="14" height="14"><use href="#i-heart"/></svg></span>+500 МБ в подарок</span></a>
+  </div>
+</section>
+
+<!-- Support -->
+<section class="section wrap">
+  <div class="support">
+    <div><h2>Поддержка</h2><p>Отвечаем на частые вопросы</p></div>
+    <div class="pills">
+      <a href="https://mobi.uz/ru/support/self-service/">Сервисы самообслуживания</a>
+      <a href="https://mobi.uz/ru/uslugi/online/esim/">eSIM</a>
+      <a href="https://mobi.uz/ru/support/setup/">Настройки</a>
+      <a href="https://mobi.uz/ru/support/imei/">IMEI</a>
+      <a href="https://mobi.uz/ru/support/ussd/">Полезные USSD команды</a>
+      <a href="https://mobi.uz/ru/uslugi/sim/">Действия с SIM-картой и номером</a>
+      <a href="https://mobi.uz/ru/support/">Все темы</a>
+    </div>
+  </div>
+</section>
+
+<!-- Internet packs -->
+<section class="section wrap" id="internet">
+  <div class="section-head">
+    <div><h2 class="h2">Интернет-пакеты</h2><p class="h2-sub">Мне нужно больше интернета</p></div>
+    <div class="tabs" role="tablist" aria-label="Период пакета">
+      <button class="tab" role="tab" aria-selected="true" data-pack="month" type="button">В месяц</button>
+      <button class="tab" role="tab" aria-selected="false" data-pack="day" type="button">В день</button>
+    </div>
+  </div>
+  <div class="packs" id="packs"></div>
+  <div style="margin-top:24px"><a class="btn btn--secondary btn--lg" href="https://mobi.uz/ru/internet/">Все интернет-пакеты</a></div>
+</section>
+
+<!-- Dark tariffs -->
+<section class="dark" id="tariffs">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="h2">Тарифы Mobiuz</h2>
+      <div class="tabs" role="tablist" aria-label="Линейка тарифов">
+        <button class="tab" role="tab" aria-selected="true" data-line="orzu" type="button">ORZU</button>
+        <button class="tab" role="tab" aria-selected="false" data-line="xotirjam" type="button">Xotirjam</button>
+      </div>
+    </div>
+
+    <div class="tariffs" id="line-orzu">
+      <article class="tcard g1">
+        <h3>ORZU 150</h3>
+        <div class="gb">400 ГБ<small>мобильного интернета в месяц</small></div>
+        <ul>
+          <li>UNLIM минут по Узбекистану</li>
+          <li>5 000 SMS в месяц</li>
+          <li>Безлимит: Telegram, Instagram, Facebook, Messenger</li>
+          <li>Kid Security, MobiMusic, MobiCinema +Sport</li>
+        </ul>
+        <div class="foot"><div class="price">150 000 сум<small>в месяц</small></div><a class="round-btn" href="https://mobi.uz/ru/tariff/orzu/orzu-150/" aria-label="Подробнее о ORZU 150" style="color:#1d2023"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></a></div>
+      </article>
+      <article class="tcard g2">
+        <h3>ORZU 110</h3>
+        <div class="gb">250 ГБ<small>мобильного интернета в месяц</small></div>
+        <ul>
+          <li>UNLIM минут по Узбекистану</li>
+          <li>5 000 SMS в месяц</li>
+          <li>Безлимит: Telegram, Instagram, Facebook, Messenger</li>
+          <li>Kid Security, MobiMusic, MobiCinema</li>
+        </ul>
+        <div class="foot"><div class="price">110 000 сум<small>в месяц</small></div><a class="round-btn" href="https://mobi.uz/ru/tariff/orzu/orzu-110/" aria-label="Подробнее о ORZU 110" style="color:#1d2023"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></a></div>
+      </article>
+      <article class="tcard g3">
+        <h3>ORZU 90</h3>
+        <div class="gb">180 ГБ<small>мобильного интернета в месяц</small></div>
+        <ul>
+          <li>UNLIM минут по Узбекистану</li>
+          <li>5 000 SMS в месяц</li>
+          <li>Безлимит: Telegram, Instagram, Facebook, Messenger</li>
+          <li>Kid Security, MobiMusic, MobiCinema</li>
+        </ul>
+        <div class="foot"><div class="price">90 000 сум<small>в месяц</small></div><a class="round-btn" href="https://mobi.uz/ru/tariff/orzu/orzu-90/" aria-label="Подробнее о ORZU 90" style="color:#1d2023"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></a></div>
+      </article>
+      <article class="tcard g4">
+        <h3>ORZU</h3>
+        <div class="gb">150 ГБ<small>мобильного интернета в месяц</small></div>
+        <ul>
+          <li>UNLIM минут по Узбекистану</li>
+          <li>5 000 SMS в месяц</li>
+          <li>Безлимит: Telegram, Instagram, Facebook, Messenger</li>
+          <li>MobiMusic, MobiCinema</li>
+        </ul>
+        <div class="foot"><div class="price">80 000 сум<small>в месяц</small></div><a class="round-btn" href="https://mobi.uz/ru/tariff/orzu/tarif_orzu/" aria-label="Подробнее о ORZU" style="color:#1d2023"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></a></div>
+      </article>
+    </div>
+
+    <div class="tariffs" id="line-xotirjam" hidden>
+      <article class="tcard g5">
+        <h3>Xotirjam 100</h3>
+        <div class="gb">200 000 МБ<small>мобильного интернета в месяц</small></div>
+        <ul>
+          <li>UNLIM минут по Узбекистану</li>
+          <li>5 000 SMS в месяц</li>
+          <li>Безлимит: Telegram, Instagram, Facebook, YouTube, ВКонтакте, WhatsApp, Viber, Zoom и другие</li>
+        </ul>
+        <div class="foot"><div class="price">100 000 сум<small>в месяц</small></div><a class="round-btn" href="https://mobi.uz/ru/tariff/xotirjam/xotirjam-100/" aria-label="Подробнее о Xotirjam 100" style="color:#1d2023"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></a></div>
+      </article>
+    </div>
+
+    <p class="hint">Переход на тариф — в офисах компании, в мобильном приложении Mobiuz, по USSD или SMS (условия на странице тарифа). <a href="https://mobi.uz/ru/tariff/" style="color:#fff;text-decoration:underline">Все тарифы</a></p>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section wrap">
+  <div class="section-head"><h2 class="h2">Сервисы</h2><a class="btn btn--secondary" href="https://mobi.uz/ru/services/">Все сервисы</a></div>
+  <div class="grid-tiles">
+    <a class="tile" href="https://mobi.uz/ru/services/kid-security/"><span class="icon-tile"><svg><use href="#i-kid"/></svg></span>Kid Security</a>
+    <a class="tile" href="https://mobi.uz/ru/services/music/"><span class="icon-tile"><svg><use href="#i-music"/></svg></span>MobiMusic</a>
+    <a class="tile" href="https://mobi.uz/ru/services/mobicinema/"><span class="icon-tile"><svg><use href="#i-play"/></svg></span>MobiCinema</a>
+    <a class="tile" href="https://mobi.uz/ru/services/hophoptv/"><span class="icon-tile"><svg><use href="#i-play"/></svg></span>hophop.tv</a>
+    <a class="tile" href="https://mobi.uz/ru/services/mobigames/"><span class="icon-tile"><svg><use href="#i-game"/></svg></span>MobiGames</a>
+    <a class="tile" href="https://mobi.uz/ru/services/mobikids/"><span class="icon-tile"><svg><use href="#i-kid"/></svg></span>MobiKids</a>
+    <a class="tile" href="https://mobi.uz/ru/services/sos/"><span class="icon-tile red"><svg><use href="#i-sos"/></svg></span>Экстренная помощь</a>
+    <a class="tile" href="https://mobi.uz/ru/services/mobi-bonus/"><span class="icon-tile"><svg><use href="#i-gift"/></svg></span>MobiBonus</a>
+  </div>
+</section>
+
+<!-- Offers -->
+<section class="section wrap">
+  <div class="section-head"><h2 class="h2">Акции</h2><a class="btn btn--secondary" href="https://mobi.uz/ru/special-offers/">Все акции</a></div>
+  <div class="offers">
+    <a class="offer" href="https://mobi.uz/ru/special-offers/discounts/mobichess/">Онлайн-турнир MobiChess<span>Подробнее →</span></a>
+    <a class="offer" href="https://mobi.uz/ru/special-offers/discounts/aktsiya-mobi-bonus/">Акция «Mobi Bonus»<span>Подробнее →</span></a>
+    <a class="offer" href="https://mobi.uz/ru/special-offers/discounts/aktsiya-skidka-za-smartfon/">Акция «Скидка за смартфон»<span>Подробнее →</span></a>
+  </div>
+</section>
+
+<!-- News -->
+<section class="section wrap">
+  <div class="section-head"><h2 class="h2">Новости</h2><a class="btn btn--secondary" href="https://mobi.uz/ru/news/">Все новости</a></div>
+  <div class="news">
+    <a href="https://mobi.uz/ru/news/2026/106497/"><time datetime="2026-10-19">19.10.2026</time><h3>Изменения на тарифных планах</h3></a>
+    <a href="https://mobi.uz/ru/news/2026/106422/"><time datetime="2026-10-16">16.10.2026</time><h3>Возобновление акции «Скидка за смартфон»</h3></a>
+    <a href="https://mobi.uz/ru/news/2026/106339/"><time datetime="2026-10-14">14.10.2026</time><h3>Новый тарифный план «Barchaga Plus»!</h3></a>
+  </div>
+</section>
+
+<!-- App -->
+<section class="section wrap">
+  <div class="app">
+    <div>
+      <h2>Скачайте приложение Mobiuz</h2>
+      <p>Бонус за установку: для всех новых пользователей мобильного приложения — 500 МБ. Достаточно зарегистрироваться и забрать бонусный интернет-пакет.</p>
+      <div class="stores">
+        <a class="btn btn--primary btn--lg" href="https://s.mobi.uz/asjv">App Store</a>
+        <a class="btn btn--white btn--lg" href="https://s.mobi.uz/asjv">Google Play</a>
+      </div>
+    </div>
+    <div class="phone" aria-hidden="true"><div><span>mobiuz<small>+500 МБ в подарок</small></span></div></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-contact">
+        <a class="phone-big" href="tel:+998971300909">(+998) 97 130 09 09</a>
+        <p>info@mobi.uz</p>
+        <p style="margin-top:8px">100000, Узбекистан, проспект Амира Темура, 24</p>
+        <div class="socials">
+          <a href="https://t.me/MyMobiuz">Telegram</a>
+          <a href="https://instagram.com/mobiuz.uzbekistan">Instagram</a>
+          <a href="https://www.facebook.com/mobiuz.uzbekistan">Facebook</a>
+          <a href="https://youtube.com/@Mobiuz">YouTube</a>
+          <a href="https://vk.com/mobiuz">VK</a>
+          <a href="https://x.com/mobiuz_uzb">X</a>
+        </div>
+      </div>
+      <div><h4>Тарифы</h4><ul>
+        <li><a href="https://mobi.uz/ru/tariff/orzu/">ORZU</a></li>
+        <li><a href="https://mobi.uz/ru/tariff/xotirjam/">Xotirjam</a></li>
+        <li><a href="https://mobi.uz/ru/tariff/barchaga-plus/">Barchaga Plus</a></li>
+        <li><a href="https://mobi.uz/ru/tariff/year/">Годовые тарифы</a></li>
+      </ul></div>
+      <div><h4>Услуги</h4><ul>
+        <li><a href="https://mobi.uz/ru/internet/">Интернет</a></li>
+        <li><a href="https://mobi.uz/ru/uslugi/roaming/">Роуминг</a></li>
+        <li><a href="https://mobi.uz/ru/uslugi/online/esim/">eSIM</a></li>
+        <li><a href="https://mobi.uz/ru/uslugi/mnp/">MNP</a></li>
+      </ul></div>
+      <div><h4>Сервисы</h4><ul>
+        <li><a href="https://mobi.uz/ru/services/music/">MobiMusic</a></li>
+        <li><a href="https://mobi.uz/ru/services/mobicinema/">MobiCinema</a></li>
+        <li><a href="https://mobi.uz/ru/services/mobigames/">MobiGames</a></li>
+        <li><a href="https://mobi.uz/ru/services/sos/">Экстренная помощь</a></li>
+      </ul></div>
+      <div><h4>Компания</h4><ul>
+        <li><a href="https://company.mobi.uz/ru/">О компании</a></li>
+        <li><a href="https://mobi.uz/ru/support/offices/">Офисы Mobiuz</a></li>
+        <li><a href="http://company.mobi.uz/ru/vacancy/">Вакансии</a></li>
+        <li><a href="https://corp.mobi.uz/ru/lawinfo/">Правовая информация</a></li>
+        <li><a href="https://mobi.uz/upload/files/oferta/oferta_ru.pdf">Публичная оферта</a></li>
+      </ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 OOO «UMS» Все права защищены</span>
+      <span><a href="https://mobi.uz/ru/">mobi.uz/ru</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  /* Mobile menu */
+  var menuBtn = $('.menu-btn');
+  menuBtn.addEventListener('click', function () {
+    var open = document.body.classList.toggle('nav-open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
+      document.body.classList.remove('nav-open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.focus();
+    }
+  });
+
+  /* Internet packs */
+  var PACKS = {
+    month: [
+      ['1 000', 'МБ', '11 000', '*102*1000#'], ['2 000', 'МБ', '17 000', '*102*2000#'],
+      ['3 000', 'МБ', '25 000', '*102*3000#'], ['5 000', 'МБ', '33 000', '*102*5000#'],
+      ['10 000', 'МБ', '50 000', '*102*10000#'], ['20 000', 'МБ', '55 000', '*102*20000#'],
+      ['30 000', 'МБ', '65 000', '*102*30000#'], ['50 000', 'МБ', '75 000', '*102*50000#']
+    ],
+    day: [
+      ['200', 'МБ', '2 000', '*102*1*200#'], ['300', 'МБ', '3 000', '*102*1*300#'],
+      ['500', 'МБ', '4 000', '*102*1*500#'], ['1 000', 'МБ', '5 000', '*102*1*1000#'],
+      ['2 000', 'МБ', '9 000', '*102*1*2000#'], ['3 000', 'МБ', '12 000', '*102*1*3000#'],
+      ['5 000', 'МБ', '16 500', '*102*1*5000#'], ['10 000', 'МБ', '25 000', '*102*1*10000#']
+    ]
+  };
+  var packsEl = $('#packs');
+  function renderPacks(kind) {
+    packsEl.innerHTML = PACKS[kind].map(function (p) {
+      return '<a class="pack" href="https://mobi.uz/ru/internet/' + kind + '/">' +
+        '<div><div class="vol">' + p[0] + '<small>' + p[1] + '</small></div><div class="code">' + p[3] + '</div></div>' +
+        '<div class="price"><span>' + p[2] + ' <small>сум</small></span>' +
+        '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow"/></svg></div></a>';
+    }).join('');
+  }
+  renderPacks('month');
+  $$('[data-pack]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      $$('[data-pack]').forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+      renderPacks(b.getAttribute('data-pack'));
+    });
+  });
+
+  /* Tariff lines */
+  $$('[data-line]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      $$('[data-line]').forEach(function (x) {
+        var on = x === b;
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        $('#line-' + x.getAttribute('data-line')).hidden = !on;
+      });
+    });
+  });
+
+  /* Carousel */
+  var car = $('#carousel'), track = $('.track', car), bars = $$('.progress i', car);
+  var n = bars.length, idx = 0, timer = null;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(i) {
+    idx = (i + n) % n;
+    track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+    bars.forEach(function (b, k) {
+      b.className = k < idx ? 'done' : '';
+    });
+    void car.offsetWidth;
+    bars[idx].className = 'on';
+    clearTimeout(timer);
+    if (!reduce) timer = setTimeout(function () { show(idx + 1); }, 6000);
+  }
+  $('#next').addEventListener('click', function () { show(idx + 1); });
+  $('#prev').addEventListener('click', function () { show(idx - 1); });
+  car.addEventListener('mouseenter', function () { clearTimeout(timer); var b = bars[idx]; b.style.animationPlayState = 'paused'; });
+  car.addEventListener('mouseleave', function () { show(idx); bars[idx].style.animationPlayState = ''; });
+  show(0);
+
+  /* Mega menu */
+  var U = 'https://mobi.uz/ru/';
+  var MENUS = {
+    tariffs: {
+      tiles: [['Тарифы', U + 'tariff/', 'i-sim'], ['Перейти со своим номером', U + 'uslugi/mnp/', 'i-swap']],
+      cols: [
+        ['Линейки тарифов', [['ORZU', U + 'tariff/orzu/'], ['Xotirjam', U + 'tariff/xotirjam/'], ['Barchaga Plus', U + 'tariff/barchaga-plus/'], ['Connect', U + 'tariff/connect/']]],
+        ['Особые условия', [['Годовые тарифы', U + 'tariff/year/'], ['Льготные тарифы', U + 'tariff/privilege/'], ['Годовая абонентская плата', U + 'uslugi/other/option/godovaya-abonentskaya-plata/'], ['Архив тарифов', U + 'tariff/archive/']]]
+      ],
+      promo: ['Тарифные планы ORZU', 'До 400 ГБ. Безлимит на мессенджеры, соцсети и звонки', U + 'tariff/orzu/', 'p1']
+    },
+    internet: {
+      tiles: [['Интернет-пакеты', U + 'internet/month/', 'i-data'], ['Домашний интернет', U + 'internet/home-internet/', 'i-home']],
+      cols: [
+        ['Пакеты', [['Месячные интернет-пакеты', U + 'internet/month/'], ['Суточные интернет-пакеты', U + 'internet/day/'], ['Ночные интернет-пакеты', U + 'internet/night/'], ['«Ночной DRIVE»', U + 'internet/drive/']]],
+        ['Безлимит', [['Доступ к 5G', U + 'uslugi/5g/'], ['Суточный Unlim', U + 'uslugi/unlim_day/'], ['Сервис Unlim «YouTube»', U + 'uslugi/other/servis-unlim-youtube/'], ['Сервис Unlim MIX', U + 'uslugi/other/servis-unlim-mix/']]]
+      ],
+      promo: ['Доступ к 5G', 'Самый быстрый интернет и отличная связь', U + 'uslugi/5g/', 'p2']
+    },
+    uslugi: {
+      tiles: [['Онлайн услуги', U + 'uslugi/online/', 'i-esim'], ['Роуминг', U + 'uslugi/roaming/', 'i-plane']],
+      cols: [
+        ['Онлайн', [['Онлайн подключение eSIM', U + 'uslugi/online/esim/'], ['Онлайн замена SIM на eSIM', U + 'uslugi/online/replacement-sim/'], ['Онлайн бронирование номера', U + 'uslugi/online/booking/'], ['Самоактивация SIM-карты', U + 'uslugi/online/self-activation/'], ['Актуализация персональных данных', U + 'uslugi/online/personal-data/']]],
+        ['Ещё', [['Минуты и смс', U + 'uslugi/messaging/'], ['Действия с SIM-картой и номером', U + 'uslugi/sim/'], ['MNP — переход со своим номером', U + 'uslugi/mnp/'], ['Дополнительные услуги', U + 'uslugi/other/'], ['Действия со счетом', U + 'uslugi/account/']]]
+      ],
+      promo: ['Переходите в Mobiuz со своим номером', 'Сохраните номер и выберите подходящий тариф', U + 'uslugi/mnp/', 'p5']
+    },
+    services: {
+      tiles: [['Мобильное приложение', U + 'services/apk/', 'i-app'], ['Экстренная помощь', U + 'services/sos/', 'i-sos']],
+      cols: [
+        ['Популярное', [['Kid Security', U + 'services/kid-security/'], ['MobiMusic', U + 'services/music/'], ['MobiCinema', U + 'services/mobicinema/'], ['hophop.tv', U + 'services/hophoptv/'], ['MobiBonus', U + 'services/mobi-bonus/']]],
+        ['Развлечения', [['MobiGames', U + 'services/mobigames/'], ['MobiMoon', U + 'services/mobimoon/'], ['MobiKids', U + 'services/mobikids/'], ['My Music — мелодия вместо гудка', U + 'services/mymusic/'], ['Информационно-развлекательные', U + 'uslugi/fun/']]]
+      ],
+      promo: ['Всё под рукой в приложении Mobiuz', 'Установите приложение и получите бонус 500 МБ', 'https://s.mobi.uz/asjv', 'p1']
+    },
+    offers: {
+      tiles: [['Скидки и спецпредложения', U + 'special-offers/discounts/', 'i-percent'], ['Архив акций', U + 'special-offers/archive/', 'i-gift']],
+      cols: [
+        ['Сейчас', [['Онлайн-турнир MobiChess', U + 'special-offers/discounts/mobichess/'], ['Акция «Mobi Bonus»', U + 'special-offers/discounts/aktsiya-mobi-bonus/'], ['Акция «Скидка за смартфон»', U + 'special-offers/discounts/aktsiya-skidka-za-smartfon/'], ['Акция на красивые номера', U + 'special-offers/discounts/krasivye-nomera/']]],
+        ['Бонусы', [['Бонусы в приложении Mobiuz', U + 'special-offers/discounts/bonusy-v-mobilnom-prilozhenii/'], ['Welcome 1 ГБ', U + 'special-offers/discounts/internet-paket-welcome/'], ['Акция «Qo‘shimcha»', U + 'special-offers/discounts/promotion-qoshimcha/'], ['1000 MB бонус в Mobi Music', U + 'special-offers/discounts/bonus-v-mobi-music/']]]
+      ],
+      promo: ['Samsung Galaxy A07', 'Адаптер Basues 20W + ORZU на 3 месяца бесплатно', U + 'special-offers/smartphone_discount/', 'p3']
+    }
+  };
+
+  var header = $('.header'), mega = $('#mega'), box = $('#mega-box'), scrim = $('#scrim');
+  var items = $$('.nav a'), current = null, closeT = null;
+  var desktop = function () { return window.innerWidth > 900; };
+
+  function render(key) {
+    var m = MENUS[key];
+    var tiles = m.tiles.map(function (t) {
+      return '<a class="mtile" href="' + t[1] + '"><span>' + t[0] + '</span><span class="icon-tile"><svg aria-hidden="true"><use href="#' + t[2] + '"/></svg></span></a>';
+    }).join('');
+    var cols = m.cols.map(function (c) {
+      return '<div class="mcol"><h4>' + c[0] + '</h4>' + c[1].map(function (l) { return '<a href="' + l[1] + '">' + l[0] + '</a>'; }).join('') + '</div>';
+    }).join('');
+    var p = m.promo;
+    box.innerHTML = '<span class="notch"></span><div class="mtiles">' + tiles + '</div>' + cols +
+      '<a class="mpromo ' + p[3] + '" href="' + p[2] + '"><strong>' + p[0] + '</strong><span>' + p[1] + '</span><em>Подробнее</em></a>';
+  }
+  function open(key, el) {
+    if (!desktop()) return;
+    clearTimeout(closeT);
+    if (current !== key) render(key);
+    current = key;
+    items.forEach(function (a) {
+      var on = a === el;
+      a.classList.toggle('is-open', on);
+      if (a.hasAttribute('data-menu')) a.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+    var br = box.getBoundingClientRect(), ir = el.getBoundingClientRect();
+    var notch = $('.notch', box);
+    if (notch) notch.style.left = Math.round(ir.left + ir.width / 2 - br.left) + 'px';
+    mega.classList.add('on'); scrim.classList.add('on');
+    mega.setAttribute('aria-hidden', 'false');
+  }
+  function close() {
+    clearTimeout(closeT);
+    current = null;
+    mega.classList.remove('on'); scrim.classList.remove('on');
+    mega.setAttribute('aria-hidden', 'true');
+    items.forEach(function (a) {
+      a.classList.remove('is-open');
+      if (a.hasAttribute('data-menu')) a.setAttribute('aria-expanded', 'false');
+    });
+  }
+  function later() { clearTimeout(closeT); closeT = setTimeout(close, 160); }
+
+  items.forEach(function (a) {
+    var key = a.getAttribute('data-menu');
+    if (key) {
+      a.addEventListener('mouseenter', function () { open(key, a); });
+      a.addEventListener('focus', function () { open(key, a); });
+      a.addEventListener('click', function (e) {
+        if (window.matchMedia('(hover: none)').matches && desktop() && current !== key) { e.preventDefault(); open(key, a); }
+      });
+    } else {
+      a.addEventListener('mouseenter', close);
+    }
+  });
+  header.addEventListener('mouseleave', later);
+  header.addEventListener('mouseenter', function () { clearTimeout(closeT); });
+  mega.addEventListener('mouseenter', function () { clearTimeout(closeT); });
+  scrim.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  window.addEventListener('resize', function () { if (!desktop()) close(); });
+})();
+</script>
+</body>
+</html>
