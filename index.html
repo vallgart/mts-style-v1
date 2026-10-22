@@ -200,7 +200,7 @@ svg { display: block; }
 /* ===== Chip row ===== */
 .chips { display: flex; justify-content: space-between; gap: 8px; margin-top: 48px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
 .chips::-webkit-scrollbar { display: none; }
-.chip { display: grid; justify-items: center; gap: 12px; width: 112px; flex: none; text-align: center; font: 400 14px/18px var(--f-compact); }
+.chip { display: grid; justify-items: center; align-content: start; gap: 12px; width: 120px; flex: none; text-align: center; font: 400 14px/18px var(--f-compact); }
 .chip .icon-tile { width: 76px; height: 76px; border-radius: 28px; transition: transform .25s ease; }
 .chip:hover .icon-tile { transform: translateY(-3px); }
 .chip .icon-tile svg { width: 38px; height: 38px; }
@@ -284,11 +284,11 @@ svg { display: block; }
 }
 .tcard:hover { transform: translateY(-4px); }
 .tcard::after { content: ""; position: absolute; right: -70px; top: -70px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,.12); pointer-events: none; }
-.tcard.g1 { background: linear-gradient(160deg, #3a3f6e, #6b73a8); }
-.tcard.g2 { background: linear-gradient(160deg, #5a4c8a, #9a8fc7); }
-.tcard.g3 { background: linear-gradient(160deg, #2c5a7a, #6aa0c4); }
-.tcard.g4 { background: linear-gradient(160deg, #6a3550, #c47c9a); }
-.tcard.g5 { background: linear-gradient(160deg, #3d4a6a, #8a98bd); }
+.tcard.g1 { background: linear-gradient(160deg, #4a0820, #e0284f); }   /* мифический — багровый */
+.tcard.g2 { background: linear-gradient(160deg, #7a3a05, #e69a1f); }   /* легендарный — золотой */
+.tcard.g5 { background: linear-gradient(160deg, #3b1f7a, #9b6df0); }   /* эпический — фиолетовый */
+.tcard.g3 { background: linear-gradient(160deg, #123f7a, #3f8fe0); }   /* редкий — синий */
+.tcard.g4 { background: linear-gradient(160deg, #1b5a3a, #4fae7b); }   /* необычный — зелёный */
 .tcard h3 { font: 500 17px/22px var(--f-wide); }
 .tcard .gb { margin-top: 14px; font: 500 44px/48px var(--f-wide); letter-spacing: -.03em; }
 .tcard .gb small { display: block; margin-top: 4px; font: 400 14px/18px var(--f-compact); opacity: .85; letter-spacing: 0; }
@@ -329,6 +329,7 @@ svg { display: block; }
 .sl-slide { flex: 0 0 100%; scroll-snap-align: start; padding: 0 28px; display: flex; flex-direction: column; gap: 10px; min-height: 132px; }
 .sl-meta { display: flex; align-items: center; gap: 12px; font: 400 14px/18px var(--f-compact); color: var(--text-2); }
 .sl-tag { padding: 3px 10px; border-radius: 8px; font: 500 12px/16px var(--f-compact); color: #fff; background: #1f9d55; }
+.sl-tag.warn { background: #e8870e; }
 .sl-tag.promo { background: var(--brand); }
 .sl-slide h3 { font: 500 19px/25px var(--f-wide); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .sl-slide:hover h3 { color: var(--link); }
@@ -360,7 +361,8 @@ svg { display: block; }
 .f-contact .phone-big { font: 500 24px/30px var(--f-wide); display: inline-block; margin-bottom: 8px; }
 .f-contact p { font-size: 14px; line-height: 20px; color: var(--text-2); }
 .socials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.socials a { display: inline-grid; place-items: center; height: 36px; padding: 0 12px; border-radius: 12px; background: var(--greyscale-100); font: 500 13px/16px var(--f-compact); color: var(--text); }
+.socials a { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--greyscale-100); color: var(--text); transition: background-color .2s; }
+.socials svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .socials a:hover { background: var(--greyscale-200); color: var(--text); }
 .f-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--greyscale-200); font-size: 13px; line-height: 18px; color: var(--text-2); }
 
@@ -625,6 +627,13 @@ svg { display: block; }
     <symbol id="t-music" viewBox="0 0 24 24"><path d="M9 17.500V6l10-2v11.500"/><circle cx="6.500" cy="17.500" r="2.500"/><circle cx="16.500" cy="15.500" r="2.500"/></symbol>
     <symbol id="t-film" viewBox="0 0 24 24"><rect x="3.500" y="5" width="17" height="14" rx="2.500"/><path d="M8 5v14M16 5v14M3.500 9.500H8M3.500 14.500H8M16 9.500h4.500M16 14.500h4.500"/></symbol>
     <symbol id="t-sport" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.500"/><path d="m12 8 3.500 2.500-1.300 4h-4.400l-1.300-4zM12 3.500V8M15.500 10.500l4.500-1.500M14.200 14.500l2.800 3.500M9.800 14.500 7 18M8.500 10.500 4 9"/></symbol>
+    <symbol id="s-self" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10 7.5h4M10 11h4M10 14.5h2"/></symbol>
+    <symbol id="s-esim" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2.5"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 12h6M12 9v6"/></symbol>
+    <symbol id="s-set" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+    <symbol id="s-imei" viewBox="0 0 24 24"><path d="M4 6v12M7 6v12M11 6v12M14 6v12M17 6v12M20 6v12"/></symbol>
+    <symbol id="s-all" viewBox="0 0 24 24"><circle cx="6" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="18" cy="12" r="1.3"/></symbol>
+    <symbol id="t-x" viewBox="0 0 24 24"><path d="M4.5 4.5h3.7l11.3 15h-3.7zM4.5 19.5l6.2-6.6M13.3 11.100 19 4.500"/></symbol>
+    <symbol id="t-warn" viewBox="0 0 24 24"><path d="M12 4 2.800 19.500h18.400z"/><path d="M12 10v4.500M12 17h.01"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
     <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
@@ -695,13 +704,14 @@ svg { display: block; }
     </div>
   </div>
 
-  <div class="wrap chips" role="list">
-    <a class="chip" role="listitem" href="https://mobi.uz/ru/tariff/"><span class="icon-tile"><svg><use href="#i-sim"/></svg></span>Тарифы</a>
-    <a class="chip" role="listitem" href="https://mobi.uz/ru/internet/"><span class="icon-tile"><svg><use href="#i-data"/></svg></span>Интернет-пакеты</a>
-    <a class="chip" role="listitem" href="https://mobi.uz/ru/internet/home-internet/"><span class="icon-tile"><svg><use href="#i-home"/></svg></span>Домашний интернет</a>
-    <a class="chip" role="listitem" href="https://mobi.uz/ru/uslugi/roaming/"><span class="icon-tile"><svg><use href="#i-plane"/></svg></span>Роуминг</a>
-    <a class="chip" role="listitem" href="https://mobi.uz/ru/services/apk/"><span class="icon-tile"><svg><use href="#i-app"/></svg></span>Мобильное приложение</a>
-    <a class="chip" role="listitem" href="https://mobi.uz/ru/special-offers/"><span class="icon-tile"><svg><use href="#i-percent"/></svg></span>Акции</a>
+  <div class="wrap chips" role="list" aria-label="Поддержка">
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/support/self-service/"><span class="icon-tile"><svg><use href="#s-self"/></svg></span>Сервисы самообслуживания</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/uslugi/online/esim/"><span class="icon-tile"><svg><use href="#s-esim"/></svg></span>eSIM</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/support/setup/"><span class="icon-tile"><svg><use href="#s-set"/></svg></span>Настройки</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/support/imei/"><span class="icon-tile"><svg><use href="#s-imei"/></svg></span>IMEI</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/support/ussd/"><span class="icon-tile"><svg><use href="#i-hash"/></svg></span>Полезные USSD команды</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/uslugi/sim/"><span class="icon-tile"><svg><use href="#i-sim"/></svg></span>Действия с SIM и номером</a>
+    <a class="chip" role="listitem" href="https://mobi.uz/ru/support/"><span class="icon-tile"><svg><use href="#s-all"/></svg></span>Все темы</a>
   </div>
   </main>
 </div>
@@ -752,22 +762,6 @@ svg { display: block; }
   </div>
 </section>
 
-<!-- Support -->
-<section class="section wrap">
-  <div class="support">
-    <div><h2>Поддержка</h2><p>Отвечаем на частые вопросы</p></div>
-    <div class="pills">
-      <a href="https://mobi.uz/ru/support/self-service/">Сервисы самообслуживания</a>
-      <a href="https://mobi.uz/ru/uslugi/online/esim/">eSIM</a>
-      <a href="https://mobi.uz/ru/support/setup/">Настройки</a>
-      <a href="https://mobi.uz/ru/support/imei/">IMEI</a>
-      <a href="https://mobi.uz/ru/support/ussd/">Полезные USSD команды</a>
-      <a href="https://mobi.uz/ru/uslugi/sim/">Действия с SIM-картой и номером</a>
-      <a href="https://mobi.uz/ru/support/">Все темы</a>
-    </div>
-  </div>
-</section>
-
 <!-- Dark tariffs -->
 <section class="dark" id="tariffs">
   <div class="wrap">
@@ -814,8 +808,6 @@ svg { display: block; }
         <div class="foot"><div class="price">100 000 сум<small>в месяц</small></div><a class="round-btn" href="https://mobi.uz/ru/tariff/xotirjam/xotirjam-100/" aria-label="Подробнее о Xotirjam 100" style="color:#1d2023"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></a></div>
       </article>
     </div>
-
-    <p class="hint">Переход на тариф — в офисах компании, в мобильном приложении Mobiuz, по USSD или SMS (условия на странице тарифа). <a href="https://mobi.uz/ru/tariff/" style="color:#fff;text-decoration:underline">Все тарифы</a></p>
   </div>
 </section>
 
@@ -862,12 +854,12 @@ svg { display: block; }
       </div>
     </div>
     <div class="feed">
-      <div class="feed-head"><h2 class="h2-sm">Акции</h2><a href="https://mobi.uz/ru/special-offers/">Посмотреть все</a></div>
+      <div class="feed-head"><h2 class="h2-sm">Профилактические работы</h2><a href="https://company.mobi.uz/ru/maintenance/">Посмотреть все</a></div>
       <div class="slider" data-slider>
         <div class="sl-track">
-        <a class="sl-slide" href="https://mobi.uz/ru/special-offers/discounts/mobichess/"><div class="sl-meta"><span class="sl-tag promo">Акция</span></div><h3>Онлайн-турнир MobiChess</h3><span class="sl-more">Подробнее →</span></a>
-        <a class="sl-slide" href="https://mobi.uz/ru/special-offers/discounts/aktsiya-mobi-bonus/"><div class="sl-meta"><span class="sl-tag promo">Акция</span></div><h3>Акция «Mobi Bonus»</h3><span class="sl-more">Подробнее →</span></a>
-        <a class="sl-slide" href="https://mobi.uz/ru/special-offers/discounts/aktsiya-skidka-za-smartfon/"><div class="sl-meta"><span class="sl-tag promo">Акция</span></div><h3>Акция «Скидка за смартфон»</h3><span class="sl-more">Подробнее →</span></a>
+        <a class="sl-slide" href="https://company.mobi.uz/ru/maintenance/2026/106559/"><div class="sl-meta"><span class="sl-tag warn">Работы</span><time>21.10.2026</time></div><h3>Операционно-плановые работы 22 октября</h3><span class="sl-more">Подробнее →</span></a>
+        <a class="sl-slide" href="https://company.mobi.uz/ru/maintenance/2026/106553/"><div class="sl-meta"><span class="sl-tag warn">Работы</span><time>21.10.2026</time></div><h3>Технические работы в Джизакской, Сырдарьинской и Ташкентской областях</h3><span class="sl-more">Подробнее →</span></a>
+        <a class="sl-slide" href="https://company.mobi.uz/ru/maintenance/2026/106550/"><div class="sl-meta"><span class="sl-tag warn">Работы</span><time>21.10.2026</time></div><h3>Технические работы в г. Ташкенте</h3><span class="sl-more">Подробнее →</span></a>
         </div>
         <div class="sl-foot"><div class="sl-dots"></div><div class="sl-arrows"><button type="button" data-dir="-1" aria-label="Назад">←</button><button type="button" data-dir="1" aria-label="Вперёд">→</button></div></div>
       </div>
@@ -882,8 +874,7 @@ svg { display: block; }
       <h2>Скачайте приложение Mobiuz</h2>
       <p>Бонус за установку: для всех новых пользователей мобильного приложения — 500 МБ. Достаточно зарегистрироваться и забрать бонусный интернет-пакет.</p>
       <div class="stores">
-        <a class="btn btn--primary btn--lg" href="https://s.mobi.uz/asjv">App Store</a>
-        <a class="btn btn--white btn--lg" href="https://s.mobi.uz/asjv">Google Play</a>
+        <a class="btn btn--primary btn--lg" href="https://s.mobi.uz/asjv">Скачать</a>
       </div>
     </div>
     <div class="phone" aria-hidden="true"><div><span>mobiuz<small>+500 МБ в подарок</small></span></div></div>
@@ -898,12 +889,12 @@ svg { display: block; }
         <p>info@mobi.uz</p>
         <p style="margin-top:8px">100000, Узбекистан, проспект Амира Темура, 24</p>
         <div class="socials">
-          <a href="https://t.me/MyMobiuz">Telegram</a>
-          <a href="https://instagram.com/mobiuz.uzbekistan">Instagram</a>
-          <a href="https://www.facebook.com/mobiuz.uzbekistan">Facebook</a>
-          <a href="https://youtube.com/@Mobiuz">YouTube</a>
-          <a href="https://vk.com/mobiuz">VK</a>
-          <a href="https://x.com/mobiuz_uzb">X</a>
+          <a href="https://t.me/MyMobiuz" aria-label="Telegram" title="Telegram" target="_blank" rel="noopener"><svg><use href="#t-tg"/></svg></a>
+          <a href="https://instagram.com/mobiuz.uzbekistan" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener"><svg><use href="#t-ig"/></svg></a>
+          <a href="https://www.facebook.com/mobiuz.uzbekistan" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener"><svg><use href="#t-fb"/></svg></a>
+          <a href="https://youtube.com/@Mobiuz" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener"><svg><use href="#t-yt"/></svg></a>
+          <a href="https://vk.com/mobiuz" aria-label="VK" title="VK" target="_blank" rel="noopener"><svg><use href="#t-vk"/></svg></a>
+          <a href="https://x.com/mobiuz_uzb" aria-label="X" title="X" target="_blank" rel="noopener"><svg><use href="#t-x"/></svg></a>
         </div>
       </div>
       <div><h4>Тарифы</h4><ul>
